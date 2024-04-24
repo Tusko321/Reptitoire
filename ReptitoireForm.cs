@@ -135,5 +135,10 @@ namespace Reptitoire
                 logGrid.Rows.Add(logInfo.datetime, logInfo.reptileName, logInfo.feederSpecies, logInfo.amount);
             }
         }
+
+        private void ReptitoireForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            manager.Save();
+        }
     }
 }

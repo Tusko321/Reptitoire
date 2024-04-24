@@ -9,8 +9,8 @@ namespace Reptitoire.ReptitoireManager.Feeder
     [System.Serializable]
     public class FeederInfo
     {
-        public string species;
-        public int amount;
+        public string species { get; set; }
+        public int amount { get; set; }
 
         public FeederInfo(string species, int amount)
         {

@@ -71,12 +71,12 @@
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.logGrid = new System.Windows.Forms.DataGridView();
-            this.label15 = new System.Windows.Forms.Label();
-            this.feedLogReptileCombo = new System.Windows.Forms.ComboBox();
             this.logDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.feedLogReptileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.feedLogFeederSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.feedLogAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label15 = new System.Windows.Forms.Label();
+            this.feedLogReptileCombo = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.reptileInfoTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.feedAmount)).BeginInit();
@@ -520,24 +520,6 @@
             this.logGrid.Size = new System.Drawing.Size(444, 334);
             this.logGrid.TabIndex = 3;
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 3);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(43, 15);
-            this.label15.TabIndex = 1;
-            this.label15.Text = "Reptile";
-            // 
-            // feedLogReptileCombo
-            // 
-            this.feedLogReptileCombo.FormattingEnabled = true;
-            this.feedLogReptileCombo.Location = new System.Drawing.Point(6, 21);
-            this.feedLogReptileCombo.Name = "feedLogReptileCombo";
-            this.feedLogReptileCombo.Size = new System.Drawing.Size(121, 23);
-            this.feedLogReptileCombo.TabIndex = 0;
-            this.feedLogReptileCombo.SelectedIndexChanged += new System.EventHandler(this.feedLogReptileCombo_SelectedIndexChanged);
-            // 
             // logDate
             // 
             this.logDate.HeaderText = "Date";
@@ -562,6 +544,24 @@
             this.feedLogAmount.Name = "feedLogAmount";
             this.feedLogAmount.ReadOnly = true;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 3);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(43, 15);
+            this.label15.TabIndex = 1;
+            this.label15.Text = "Reptile";
+            // 
+            // feedLogReptileCombo
+            // 
+            this.feedLogReptileCombo.FormattingEnabled = true;
+            this.feedLogReptileCombo.Location = new System.Drawing.Point(6, 21);
+            this.feedLogReptileCombo.Name = "feedLogReptileCombo";
+            this.feedLogReptileCombo.Size = new System.Drawing.Size(121, 23);
+            this.feedLogReptileCombo.TabIndex = 0;
+            this.feedLogReptileCombo.SelectedIndexChanged += new System.EventHandler(this.feedLogReptileCombo_SelectedIndexChanged);
+            // 
             // ReptitoireForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -570,6 +570,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "ReptitoireForm";
             this.Text = "Reptitoire";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ReptitoireForm_FormClosing);
             this.tabControl1.ResumeLayout(false);
             this.reptileInfoTab.ResumeLayout(false);
             this.reptileInfoTab.PerformLayout();

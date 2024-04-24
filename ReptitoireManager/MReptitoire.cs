@@ -1,10 +1,6 @@
 ﻿using Reptitoire.ReptitoireManager.Reptile;
 using Reptitoire.ReptitoireManager.Feeder;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Text.Json;
 
 namespace Reptitoire.ReptitoireManager
@@ -16,8 +12,8 @@ namespace Reptitoire.ReptitoireManager
         private const string FEED_LOG_FILENAME = "log.dat";
         private const string FOLDER_NAME = "Reptitoire";
 
-        private List<ReptileInfo> reptiles;
-        private List<FeederInfo> feeders;
+        private ReptileList reptiles;
+        private FeederList feeders;
         private FeedLog feedLog;
 
         public MReptitoire() 
@@ -29,12 +25,12 @@ namespace Reptitoire.ReptitoireManager
             string logSaveDir = Path.Combine(appDataDir, FOLDER_NAME, FEED_LOG_FILENAME);
 
             // Load reptiles
-            reptiles = new List<ReptileInfo>();
+            reptiles = new ReptileList();
             if (File.Exists(reptileSaveDir))
             {
                 FileStream fs = File.Open(reptileSaveDir, FileMode.Open);
-                ReptileInfo[]? rArr = JsonSerializer.Deserialize<ReptileInfo[]>(fs);
-                foreach (ReptileInfo reptile in rArr)
+                ReptileList? rArr = JsonSerializer.Deserialize<ReptileList>(fs);
+                foreach (ReptileInfo reptile in rArr.List)
                 {
                     reptiles.Add(reptile);
                 }
@@ -42,12 +38,12 @@ namespace Reptitoire.ReptitoireManager
             }
 
             // Load feeders
-            feeders = new List<FeederInfo>();
+            feeders = new FeederList();
             if (File.Exists(feederSaveDir))
             {
                 FileStream fs = File.Open(feederSaveDir, FileMode.Open);
-                FeederInfo[]? fArr = JsonSerializer.Deserialize<FeederInfo[]>(fs);
-                foreach(FeederInfo feeder in fArr)
+                FeederList? fArr = JsonSerializer.Deserialize<FeederList>(fs);
+                foreach(FeederInfo feeder in fArr.List)
                 {
                     feeders.Add(feeder);
                 }
@@ -59,14 +55,14 @@ namespace Reptitoire.ReptitoireManager
 
         public FeedLog GetLog() { return feedLog; }
 
-        public List<ReptileInfo> GetReptiles() { return reptiles; }
+        public List<ReptileInfo> GetReptiles() { return reptiles.List; }
 
-        public List<FeederInfo> GetFeeders() { return feeders; }
+        public List<FeederInfo> GetFeeders() { return feeders.List; }
 
         public int GetReptileIndex(string name)
         {
             int index = -1;
-            for(int i = 0; i < reptiles.Count; i++)
+            for(int i = 0; i < reptiles.List.Count; i++)
             {
                 if (name.Equals(reptiles[i].name))
                 {
@@ -80,7 +76,7 @@ namespace Reptitoire.ReptitoireManager
         public int GetFeederIndex(string species)
         {
             int index = -1;
-            for(int i = 0; i < feeders.Count; i++)
+            for(int i = 0; i < feeders.List.Count; i++)
             {
                 if (feeders[i].species.Equals(species))
                 {
@@ -124,8 +120,8 @@ namespace Reptitoire.ReptitoireManager
 
         public string[] GetFeederSpecies()
         {
-            string[] fArr = new string[feeders.Count];
-            for(int i = 0; i < feeders.Count; i++)
+            string[] fArr = new string[feeders.List.Count];
+            for(int i = 0; i < feeders.List.Count; i++)
             {
                 fArr[i] = feeders[i].species;
             }
@@ -135,8 +131,8 @@ namespace Reptitoire.ReptitoireManager
 
         public int[] GetFeederCounts()
         {
-            int[] feederCounts = new int[feeders.Count];
-            for(int i = 0; i < feeders.Count; i++)
+            int[] feederCounts = new int[feeders.List.Count];
+            for(int i = 0; i < feeders.List.Count; i++)
             {
                 feederCounts[i] = feeders[i].amount;
             }
@@ -150,12 +146,17 @@ namespace Reptitoire.ReptitoireManager
             string appDataDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string reptileSaveDir = Path.Combine(appDataDir, FOLDER_NAME, REPTILE_FILENAME);
             string feederSaveDir = Path.Combine(appDataDir, FOLDER_NAME, FEEDER_FILENAME);
+            string logSaveDir = Path.Combine(appDataDir, FOLDER_NAME, FEED_LOG_FILENAME);
 
             // Convert data to JSON
-            string reptileJSON = JsonSerializer.Serialize(reptiles.ToArray());
-            string feederJSON = JsonSerializer.Serialize(feeders.ToArray());
+            string reptileJSON = JsonSerializer.Serialize(reptiles);
+            string feederJSON = JsonSerializer.Serialize(feeders);
 
             // Overwrite or create save files and write their appropriate JSON
+            string reptileSavePath = Path.Combine(appDataDir, FOLDER_NAME);
+            string feederSavePath = Path.Combine(appDataDir, FOLDER_NAME);
+            Directory.CreateDirectory(reptileSavePath);
+            Directory.CreateDirectory(feederSavePath);
             FileStream rfs = File.Create(reptileSaveDir);
             FileStream ffs = File.Create(feederSaveDir);
             rfs.Write(Encoding.ASCII.GetBytes(reptileJSON), 0, Encoding.ASCII.GetByteCount(reptileJSON));
@@ -164,6 +165,8 @@ namespace Reptitoire.ReptitoireManager
             // Close streams
             rfs.Close();
             ffs.Close();
+
+            feedLog.Save(logSaveDir);
         }
     }
 }

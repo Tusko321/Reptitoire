@@ -1,20 +1,12 @@
-﻿using Reptitoire.ReptitoireManager.Feeder;
-using Reptitoire.ReptitoireManager.Reptile;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Reptitoire.ReptitoireManager
+﻿namespace Reptitoire.ReptitoireManager
 {
     [System.Serializable]
     public class FeedLogInfo
     {
-        public string datetime;
-        public string reptileName;
-        public string feederSpecies;
-        public int amount;
+        public string datetime { get; set; }
+        public string reptileName { get; set; }
+        public string feederSpecies { get; set; }
+        public int amount { get; set; }
 
         public FeedLogInfo(string datetime, string reptileName, string feederSpecies, int amount)
         {

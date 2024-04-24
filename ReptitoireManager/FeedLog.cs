@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace Reptitoire.ReptitoireManager
 {
@@ -49,7 +45,7 @@ namespace Reptitoire.ReptitoireManager
 
         public void Save(string logPath)
         {
-            string logJSON = JsonSerializer.Serialize(log.ToArray());
+            string logJSON = JsonSerializer.Serialize(log);
 
             FileStream fs = File.Create(logPath);
             fs.Write(Encoding.ASCII.GetBytes(logJSON), 0, Encoding.ASCII.GetByteCount(logJSON));

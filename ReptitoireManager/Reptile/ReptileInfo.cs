@@ -9,11 +9,11 @@ namespace Reptitoire.ReptitoireManager.Reptile
     [System.Serializable]
     public class ReptileInfo
     {
-        public string name;
-        public string birthday;
-        public string species;
-        public string sex;
-        public string lastDayFed;
+        public string name { get; set; }
+        public string birthday { get; set; }
+        public string species { get; set; }
+        public string sex { get; set; }
+        public string lastDayFed { get; set; }
 
         public ReptileInfo(string name, string birthday, string species, string sex, string lastDayFed)
         {
