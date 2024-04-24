@@ -1,20 +1,19 @@
 using Reptitoire.ReptitoireManager;
 using Reptitoire.ReptitoireManager.Feeder;
 using Reptitoire.ReptitoireManager.Reptile;
+using System.Reflection;
 
 namespace Reptitoire
 {
     public partial class ReptitoireForm : Form
     {
-        private const string VERSION = "v0.10";
-
         private MReptitoire manager;
 
         public ReptitoireForm()
         {
             manager = new MReptitoire();
             InitializeComponent();
-            this.Text = this.Text + " " + VERSION;
+            this.Text = this.Text + " " + Assembly.GetExecutingAssembly().GetName().Version;
 
             UpdateReptileGridList();
             UpdateFeederGridList();
