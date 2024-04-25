@@ -7,7 +7,7 @@
     <Nullable>disable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <BaseOutputPath>bin\v0.10-$(MSBuildProjectName)</BaseOutputPath>
+    <BaseOutputPath>bin\v$(AssemblyVersion)-$(MSBuildProjectName)</BaseOutputPath>
     <SignAssembly>False</SignAssembly>
     <AssemblyOriginatorKeyFile>Reptitoire</AssemblyOriginatorKeyFile>
     <DelaySign>False</DelaySign>
