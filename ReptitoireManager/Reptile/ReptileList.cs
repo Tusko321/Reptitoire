@@ -10,10 +10,9 @@
 
         public ReptileList() { List = new List<ReptileInfo>(); }
 
-        public void Add(ReptileInfo reptileInfo)
-        {
-            List.Add(reptileInfo);
-        }
+        public void Add(ReptileInfo reptileInfo) { List.Add(reptileInfo); }
+
+        public void RemoveAt(int index) { List.RemoveAt(index); }
 
         public ReptileInfo this[int index]
         {

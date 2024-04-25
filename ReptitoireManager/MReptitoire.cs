@@ -145,6 +145,15 @@ namespace Reptitoire.ReptitoireManager
         }
 
         /// <summary>
+        /// Delete a reptile from the program
+        /// </summary>
+        /// <param name="name"></param>
+        public void DeleteReptile(string name)
+        {
+            reptiles.RemoveAt(GetReptileIndex(name));
+        }
+
+        /// <summary>
         /// Create a new feeder species
         /// </summary>
         /// <param name="species"></param>
@@ -154,6 +163,15 @@ namespace Reptitoire.ReptitoireManager
             if(GetFeederIndex(species) != -1) return;
 
             feeders.Add(new FeederInfo(species, amount));
+        }
+
+        /// <summary>
+        /// Delete a feeder from the program
+        /// </summary>
+        /// <param name="species"></param>
+        public void DeleteFeeder(string species)
+        {
+            feeders.RemoveAt(GetFeederIndex(species));
         }
 
         /// <summary>

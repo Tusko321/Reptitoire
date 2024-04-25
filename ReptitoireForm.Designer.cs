@@ -78,6 +78,14 @@
             this.feedLogAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label15 = new System.Windows.Forms.Label();
             this.feedLogReptileCombo = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.deleteReptileCombo = new System.Windows.Forms.ComboBox();
+            this.deleteReptileButton = new System.Windows.Forms.Button();
+            this.deleteFeederButton = new System.Windows.Forms.Button();
+            this.deleteFeederCombo = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.reptileInfoTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.feedAmount)).BeginInit();
@@ -103,6 +111,10 @@
             // 
             // reptileInfoTab
             // 
+            this.reptileInfoTab.Controls.Add(this.deleteReptileButton);
+            this.reptileInfoTab.Controls.Add(this.deleteReptileCombo);
+            this.reptileInfoTab.Controls.Add(this.label17);
+            this.reptileInfoTab.Controls.Add(this.label16);
             this.reptileInfoTab.Controls.Add(this.feedButton);
             this.reptileInfoTab.Controls.Add(this.label9);
             this.reptileInfoTab.Controls.Add(this.feedAmount);
@@ -347,6 +359,10 @@
             // 
             // feederInfoTab
             // 
+            this.feederInfoTab.Controls.Add(this.deleteFeederButton);
+            this.feederInfoTab.Controls.Add(this.deleteFeederCombo);
+            this.feederInfoTab.Controls.Add(this.label18);
+            this.feederInfoTab.Controls.Add(this.label19);
             this.feederInfoTab.Controls.Add(this.addFeeders);
             this.feederInfoTab.Controls.Add(this.addFeedersAmount);
             this.feederInfoTab.Controls.Add(this.addFeedersCombo);
@@ -570,6 +586,80 @@
             this.feedLogReptileCombo.TabIndex = 0;
             this.feedLogReptileCombo.SelectedIndexChanged += new System.EventHandler(this.feedLogReptileCombo_SelectedIndexChanged);
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label16.Location = new System.Drawing.Point(320, 242);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(106, 21);
+            this.label16.TabIndex = 19;
+            this.label16.Text = "Delete Reptile";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(324, 263);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(78, 15);
+            this.label17.TabIndex = 20;
+            this.label17.Text = "Reptile Name";
+            // 
+            // deleteReptileCombo
+            // 
+            this.deleteReptileCombo.FormattingEnabled = true;
+            this.deleteReptileCombo.Location = new System.Drawing.Point(324, 281);
+            this.deleteReptileCombo.Name = "deleteReptileCombo";
+            this.deleteReptileCombo.Size = new System.Drawing.Size(78, 23);
+            this.deleteReptileCombo.TabIndex = 21;
+            // 
+            // deleteReptileButton
+            // 
+            this.deleteReptileButton.Location = new System.Drawing.Point(408, 281);
+            this.deleteReptileButton.Name = "deleteReptileButton";
+            this.deleteReptileButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteReptileButton.TabIndex = 22;
+            this.deleteReptileButton.Text = "Delete";
+            this.deleteReptileButton.UseVisualStyleBackColor = true;
+            this.deleteReptileButton.Click += new System.EventHandler(this.deleteReptileButton_Click);
+            // 
+            // deleteFeederButton
+            // 
+            this.deleteFeederButton.Location = new System.Drawing.Point(319, 228);
+            this.deleteFeederButton.Name = "deleteFeederButton";
+            this.deleteFeederButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteFeederButton.TabIndex = 26;
+            this.deleteFeederButton.Text = "Delete";
+            this.deleteFeederButton.UseVisualStyleBackColor = true;
+            this.deleteFeederButton.Click += new System.EventHandler(this.deleteFeederButton_Click);
+            // 
+            // deleteFeederCombo
+            // 
+            this.deleteFeederCombo.FormattingEnabled = true;
+            this.deleteFeederCombo.Location = new System.Drawing.Point(213, 228);
+            this.deleteFeederCombo.Name = "deleteFeederCombo";
+            this.deleteFeederCombo.Size = new System.Drawing.Size(100, 23);
+            this.deleteFeederCombo.TabIndex = 25;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(217, 210);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(46, 15);
+            this.label18.TabIndex = 24;
+            this.label18.Text = "Species";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label19.Location = new System.Drawing.Point(213, 189);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(105, 21);
+            this.label19.TabIndex = 23;
+            this.label19.Text = "Delete Feeder";
+            // 
             // ReptitoireForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -649,5 +739,13 @@
         private DataGridViewTextBoxColumn feedLogReptileName;
         private DataGridViewTextBoxColumn feedLogFeederSpecies;
         private DataGridViewTextBoxColumn feedLogAmount;
+        private Button deleteReptileButton;
+        private ComboBox deleteReptileCombo;
+        private Label label17;
+        private Label label16;
+        private Button deleteFeederButton;
+        private ComboBox deleteFeederCombo;
+        private Label label18;
+        private Label label19;
     }
 }

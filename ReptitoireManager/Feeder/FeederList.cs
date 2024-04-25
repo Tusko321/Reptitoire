@@ -10,10 +10,9 @@
 
         public FeederList() { List = new List<FeederInfo>(); }
 
-        public void Add(FeederInfo feederInfo)
-        {
-            List.Add(feederInfo);
-        }
+        public void Add(FeederInfo feederInfo) { List.Add(feederInfo); }
+
+        public void RemoveAt(int index) { List.RemoveAt(index); }
 
         public FeederInfo this[int index]
         {

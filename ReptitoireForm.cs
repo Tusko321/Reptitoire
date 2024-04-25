@@ -96,11 +96,13 @@ namespace Reptitoire
         {
             feedFeederSpeciesCombo.Items.Clear();
             addFeedersCombo.Items.Clear();
+            deleteFeederCombo.Items.Clear();
 
             foreach(FeederInfo feeder in manager.GetFeeders())
             {
                 feedFeederSpeciesCombo.Items.Add(feeder.species);
                 addFeedersCombo.Items.Add(feeder.species);
+                deleteFeederCombo.Items.Add(feeder.species);
             }
         }
 
@@ -108,11 +110,13 @@ namespace Reptitoire
         {
             feedReptileNameCombo.Items.Clear();
             feedLogReptileCombo.Items.Clear();
+            deleteReptileCombo.Items.Clear();
 
             foreach(ReptileInfo reptile in manager.GetReptiles())
             {
                 feedReptileNameCombo.Items.Add(reptile.name);
                 feedLogReptileCombo.Items.Add(reptile.name);
+                deleteReptileCombo.Items.Add(reptile.name);
             }
         }
 
@@ -151,6 +155,32 @@ namespace Reptitoire
         private void ReptitoireForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             manager.Save();
+        }
+
+        // Delete a reptile
+        private void deleteReptileButton_Click(object sender, EventArgs e)
+        {
+            if (deleteReptileCombo.Text == string.Empty) return;
+
+            manager.DeleteReptile(deleteReptileCombo.Text);
+
+            deleteReptileCombo.ResetText();
+
+            UpdateReptileComboBoxes();
+            UpdateReptileGridList();
+        }
+
+        // Delete a feeder
+        private void deleteFeederButton_Click(object sender, EventArgs e)
+        {
+            if(deleteFeederCombo.Text == string.Empty) return;
+
+            manager.DeleteFeeder(deleteFeederCombo.Text);
+
+            deleteFeederCombo.ResetText();
+
+            UpdateFeederComboBoxes();
+            UpdateFeederGridList();
         }
     }
 }
