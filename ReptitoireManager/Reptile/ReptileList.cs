@@ -1,5 +1,8 @@
 ﻿namespace Reptitoire.ReptitoireManager.Reptile
 {
+    /// <summary>
+    /// Serializable array of reptiles for JSON conversion
+    /// </summary>
     [System.Serializable]
     public class ReptileList
     {

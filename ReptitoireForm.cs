@@ -9,20 +9,24 @@ namespace Reptitoire
     {
         private MReptitoire manager;
 
+        // Init form
         public ReptitoireForm()
         {
             manager = new MReptitoire();
             InitializeComponent();
             this.Text = this.Text + " " + Assembly.GetExecutingAssembly().GetName().Version;
 
+            // Force refresh of all grids and combos
             UpdateReptileGridList();
             UpdateFeederGridList();
             UpdateFeederComboBoxes();
             UpdateReptileComboBoxes();
         }
 
+        // Create a new reptile
         private void newReptileButton_Click(object sender, EventArgs e)
         {
+            // Check for null entries
             if(newReptileNameText.Text == String.Empty ||
                 newReptileSpeciesText.Text == String.Empty ||
                 newReptileSexCombo.Text == String.Empty)
@@ -40,9 +44,11 @@ namespace Reptitoire
             UpdateReptileGridList();
         }
 
+        // Feed a reptile
         private void feedButton_Click(object sender, EventArgs e)
         {
-            if(feedReptileNameCombo.Text == String.Empty ||
+            // Check for null entries
+            if (feedReptileNameCombo.Text == String.Empty ||
                 feedFeederSpeciesCombo.Text == String.Empty ||
                 feedAmount.Value == 0) { return; }
 
@@ -53,10 +59,13 @@ namespace Reptitoire
             feedAmount.ResetText();
 
             UpdateFeederGridList();
+            UpdateReptileGridList();
         }
 
+        // Add new feeder species
         private void addNewFeeder_Click(object sender, EventArgs e)
         {
+            // Check for null entries
             if (newFeederSpecies.Text == string.Empty) return;
 
             manager.CreateFeeder(newFeederSpecies.Text, (int)newFeederAmount.Value);
@@ -68,8 +77,10 @@ namespace Reptitoire
             UpdateFeederGridList();
         }
 
+        // Add feeder amounts
         private void addFeeders_Click(object sender, EventArgs e)
         {
+            // Check for null entries
             if (addFeedersCombo.Text == string.Empty ||
                 addFeedersAmount.Value == 0) return;
 
@@ -125,6 +136,7 @@ namespace Reptitoire
             }
         }
 
+        // When we change the selected reptile in the log tab, we need to refresh the log grid
         private void feedLogReptileCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
             logGrid.Rows.Clear();
@@ -135,6 +147,7 @@ namespace Reptitoire
             }
         }
 
+        // Save before close
         private void ReptitoireForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             manager.Save();

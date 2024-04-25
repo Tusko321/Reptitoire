@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Reptitoire.ReptitoireManager.Feeder
+﻿namespace Reptitoire.ReptitoireManager.Feeder
 {
+    /// <summary>
+    /// Holds the information for feeders
+    /// </summary>
     [System.Serializable]
     public class FeederInfo
     {

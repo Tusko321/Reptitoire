@@ -1,5 +1,8 @@
 ﻿namespace Reptitoire.ReptitoireManager.Feeder
 {
+    /// <summary>
+    /// Serializable array of feeders for JSON conversion
+    /// </summary>
     [System.Serializable]
     public class FeederList
     {

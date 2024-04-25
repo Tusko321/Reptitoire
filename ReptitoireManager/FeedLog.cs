@@ -3,6 +3,9 @@ using System.Text.Json;
 
 namespace Reptitoire.ReptitoireManager
 {
+    /// <summary>
+    /// Serializable log info list for JSON conversion-
+    /// </summary>
     public class FeedLog
     {
         private List<FeedLogInfo> log;
@@ -23,6 +26,11 @@ namespace Reptitoire.ReptitoireManager
             }
         }
 
+        /// <summary>
+        /// Gets the feed logs for a specified reptile
+        /// </summary>
+        /// <param name="reptileName"></param>
+        /// <returns></returns>
         public List<FeedLogInfo> GetReptileLogs(string reptileName)
         {
             List<FeedLogInfo> list = new List<FeedLogInfo>();
@@ -38,11 +46,21 @@ namespace Reptitoire.ReptitoireManager
             return list;
         }
 
+        /// <summary>
+        /// Log a new feed event
+        /// </summary>
+        /// <param name="reptileName"></param>
+        /// <param name="feederSpecies"></param>
+        /// <param name="amount"></param>
         public void Log(string reptileName, string feederSpecies, int amount)
         {
             log.Add(new FeedLogInfo(DateTime.Now.ToString(), reptileName, feederSpecies, amount));
         }
 
+        /// <summary>
+        /// Save the logs
+        /// </summary>
+        /// <param name="logPath"></param>
         public void Save(string logPath)
         {
             string logJSON = JsonSerializer.Serialize(log);

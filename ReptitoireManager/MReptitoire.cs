@@ -7,14 +7,18 @@ namespace Reptitoire.ReptitoireManager
 {
     public class MReptitoire
     {
+        // Consts
         private const string REPTILE_FILENAME = "reptiles.dat";
         private const string FEEDER_FILENAME = "feeders.dat";
         private const string FEED_LOG_FILENAME = "log.dat";
         private const string FOLDER_NAME = "Reptitoire";
+        // Consts
 
+        // Data
         private ReptileList reptiles;
         private FeederList feeders;
         private FeedLog feedLog;
+        // Data
 
         public MReptitoire() 
         {
@@ -53,12 +57,29 @@ namespace Reptitoire.ReptitoireManager
             feedLog = new FeedLog(logSaveDir);
         }
 
+        /// <summary>
+        /// Get feed log
+        /// </summary>
+        /// <returns></returns>
         public FeedLog GetLog() { return feedLog; }
 
+        /// <summary>
+        /// Get all reptiles
+        /// </summary>
+        /// <returns></returns>
         public List<ReptileInfo> GetReptiles() { return reptiles.List; }
 
+        /// <summary>
+        /// Get all feeders
+        /// </summary>
+        /// <returns></returns>
         public List<FeederInfo> GetFeeders() { return feeders.List; }
 
+        /// <summary>
+        /// Returns index of specified reptile
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public int GetReptileIndex(string name)
         {
             int index = -1;
@@ -73,6 +94,11 @@ namespace Reptitoire.ReptitoireManager
             return index;
         }
 
+        /// <summary>
+        /// Returns index of specified feeder
+        /// </summary>
+        /// <param name="species"></param>
+        /// <returns></returns>
         public int GetFeederIndex(string species)
         {
             int index = -1;
@@ -87,6 +113,12 @@ namespace Reptitoire.ReptitoireManager
             return index;
         }
 
+        /// <summary>
+        /// Feed a reptile and log it
+        /// </summary>
+        /// <param name="reptileIndex"></param>
+        /// <param name="feederIndex"></param>
+        /// <param name="amount"></param>
         public void FeedReptile(int reptileIndex, int feederIndex, int amount)
         {
             if (reptileIndex == -1 || feederIndex == -1) return;
@@ -97,6 +129,14 @@ namespace Reptitoire.ReptitoireManager
             feedLog.Log(reptiles[reptileIndex].name, feeders[feederIndex].species, amount);
         }
 
+        /// <summary>
+        /// Create a new reptile
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="birthday"></param>
+        /// <param name="species"></param>
+        /// <param name="sex"></param>
+        /// <param name="lastDayFed"></param>
         public void AddReptile(string name, string birthday, string species, string sex, string lastDayFed)
         {
             if (GetReptileIndex(name) != -1) return;
@@ -104,6 +144,11 @@ namespace Reptitoire.ReptitoireManager
             reptiles.Add(new ReptileInfo(name, birthday, species, sex, lastDayFed));
         }
 
+        /// <summary>
+        /// Create a new feeder species
+        /// </summary>
+        /// <param name="species"></param>
+        /// <param name="amount"></param>
         public void CreateFeeder(string species, int amount)
         {
             if(GetFeederIndex(species) != -1) return;
@@ -111,6 +156,11 @@ namespace Reptitoire.ReptitoireManager
             feeders.Add(new FeederInfo(species, amount));
         }
 
+        /// <summary>
+        /// Add amount to a specified feeder
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="amount"></param>
         public void AddFeeders(int index, int amount)
         {
             if (index != -1) return;
@@ -118,28 +168,9 @@ namespace Reptitoire.ReptitoireManager
             feeders[index].amount += amount;
         }
 
-        public string[] GetFeederSpecies()
-        {
-            string[] fArr = new string[feeders.List.Count];
-            for(int i = 0; i < feeders.List.Count; i++)
-            {
-                fArr[i] = feeders[i].species;
-            }
-
-            return fArr;
-        }
-
-        public int[] GetFeederCounts()
-        {
-            int[] feederCounts = new int[feeders.List.Count];
-            for(int i = 0; i < feeders.List.Count; i++)
-            {
-                feederCounts[i] = feeders[i].amount;
-            }
-
-            return feederCounts;
-        }
-
+        /// <summary>
+        /// Saves all data
+        /// </summary>
         public void Save()
         {
             // Get appdata path

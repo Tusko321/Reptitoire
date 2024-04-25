@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Reptitoire.ReptitoireManager.Reptile
 {
+    /// <summary>
+    /// Holds the information for a reptile
+    /// </summary>
     [System.Serializable]
     public class ReptileInfo
     {
@@ -24,6 +27,10 @@ namespace Reptitoire.ReptitoireManager.Reptile
             this.lastDayFed = lastDayFed;
         }
 
+        /// <summary>
+        /// Converts reptiles birthday to an age
+        /// </summary>
+        /// <returns>Reptiles age formatted as, "'n' days" or "'n' y 'n' days"</returns>
         public string GetAge()
         {
             TimeSpan age = DateTime.Now.Date - DateTime.Parse(birthday);
@@ -41,6 +48,10 @@ namespace Reptitoire.ReptitoireManager.Reptile
             }
         }
 
+        /// <summary>
+        /// Checks if last day fed was today
+        /// </summary>
+        /// <returns>True if reptile was fed on todays date</returns>
         public bool WasFedToday()
         {
             DateTime dateFed = DateTime.Parse(lastDayFed);
