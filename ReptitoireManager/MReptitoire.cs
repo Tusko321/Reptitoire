@@ -145,12 +145,17 @@ namespace Reptitoire.ReptitoireManager
         }
 
         /// <summary>
-        /// Delete a reptile from the program
+        /// Delete a reptile from the program aswell as their data from the feed log
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="name"></param> 
         public void DeleteReptile(string name)
         {
             reptiles.RemoveAt(GetReptileIndex(name));
+
+            foreach(FeedLogInfo e in feedLog.GetReptileLogs(name))
+            {
+                feedLog.Remove(e);
+            }
         }
 
         /// <summary>

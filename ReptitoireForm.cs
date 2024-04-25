@@ -171,7 +171,7 @@ namespace Reptitoire
         }
 
         // Delete a feeder
-        private void deleteFeederButton_Click(object sender, EventArgs e)
+        private void deleteFeederButton_Click(object sender, EventArgs e) 
         {
             if(deleteFeederCombo.Text == string.Empty) return;
 

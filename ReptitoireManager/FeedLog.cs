@@ -58,6 +58,15 @@ namespace Reptitoire.ReptitoireManager
         }
 
         /// <summary>
+        /// Remove item from log
+        /// </summary>
+        /// <param name="item"></param>
+        public void Remove(FeedLogInfo item)
+        {
+            log.Remove(item);
+        }
+
+        /// <summary>
         /// Save the logs
         /// </summary>
         /// <param name="logPath"></param>
