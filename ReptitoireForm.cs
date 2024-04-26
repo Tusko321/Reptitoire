@@ -54,6 +54,12 @@ namespace Reptitoire
 
             manager.FeedReptile(manager.GetReptileIndex(feedReptileNameCombo.Text), manager.GetFeederIndex(feedFeederSpeciesCombo.Text), (int)feedAmount.Value);
 
+            // If fed reptile is in log view, just add the event to the grid view
+            if (feedLogReptileCombo.Text.Equals(feedReptileNameCombo.Text))
+            {
+                logGrid.Rows.Add(DateTime.Now.ToString(), feedReptileNameCombo.Text, feedFeederSpeciesCombo.Text, (int)feedAmount.Value);
+            }
+
             feedReptileNameCombo.ResetText();
             feedFeederSpeciesCombo.ResetText();
             feedAmount.ResetText();
@@ -163,6 +169,13 @@ namespace Reptitoire
             if (deleteReptileCombo.Text == string.Empty) return;
 
             manager.DeleteReptile(deleteReptileCombo.Text);
+
+            // Reset log view if selected reptile got deleted
+            if (feedLogReptileCombo.Text.Equals(deleteReptileCombo.Text))
+            {
+                logGrid.Rows.Clear();
+                feedLogReptileCombo.ResetText();
+            }
 
             deleteReptileCombo.ResetText();
 
