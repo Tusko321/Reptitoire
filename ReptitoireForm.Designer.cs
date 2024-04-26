@@ -31,6 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReptitoireForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.reptileInfoTab = new System.Windows.Forms.TabPage();
+            this.deleteReptileButton = new System.Windows.Forms.Button();
+            this.deleteReptileCombo = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.feedButton = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.feedAmount = new System.Windows.Forms.NumericUpDown();
@@ -56,6 +60,10 @@
             this.Species = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FedToday = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.feederInfoTab = new System.Windows.Forms.TabPage();
+            this.deleteFeederButton = new System.Windows.Forms.Button();
+            this.deleteFeederCombo = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.addFeeders = new System.Windows.Forms.Button();
             this.addFeedersAmount = new System.Windows.Forms.NumericUpDown();
             this.addFeedersCombo = new System.Windows.Forms.ComboBox();
@@ -71,6 +79,8 @@
             this.FeederSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.logClearButton = new System.Windows.Forms.Button();
+            this.logExportButton = new System.Windows.Forms.Button();
             this.logGrid = new System.Windows.Forms.DataGridView();
             this.logDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.feedLogReptileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,14 +88,6 @@
             this.feedLogAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label15 = new System.Windows.Forms.Label();
             this.feedLogReptileCombo = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.deleteReptileCombo = new System.Windows.Forms.ComboBox();
-            this.deleteReptileButton = new System.Windows.Forms.Button();
-            this.deleteFeederButton = new System.Windows.Forms.Button();
-            this.deleteFeederCombo = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.reptileInfoTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.feedAmount)).BeginInit();
@@ -141,6 +143,43 @@
             this.reptileInfoTab.TabIndex = 0;
             this.reptileInfoTab.Text = "Reptile Info";
             this.reptileInfoTab.UseVisualStyleBackColor = true;
+            // 
+            // deleteReptileButton
+            // 
+            this.deleteReptileButton.Location = new System.Drawing.Point(408, 281);
+            this.deleteReptileButton.Name = "deleteReptileButton";
+            this.deleteReptileButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteReptileButton.TabIndex = 22;
+            this.deleteReptileButton.Text = "Delete";
+            this.deleteReptileButton.UseVisualStyleBackColor = true;
+            this.deleteReptileButton.Click += new System.EventHandler(this.deleteReptileButton_Click);
+            // 
+            // deleteReptileCombo
+            // 
+            this.deleteReptileCombo.FormattingEnabled = true;
+            this.deleteReptileCombo.Location = new System.Drawing.Point(324, 281);
+            this.deleteReptileCombo.Name = "deleteReptileCombo";
+            this.deleteReptileCombo.Size = new System.Drawing.Size(78, 23);
+            this.deleteReptileCombo.TabIndex = 21;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(324, 263);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(78, 15);
+            this.label17.TabIndex = 20;
+            this.label17.Text = "Reptile Name";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label16.Location = new System.Drawing.Point(320, 242);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(106, 21);
+            this.label16.TabIndex = 19;
+            this.label16.Text = "Delete Reptile";
             // 
             // feedButton
             // 
@@ -382,6 +421,43 @@
             this.feederInfoTab.Text = "Feeder Info";
             this.feederInfoTab.UseVisualStyleBackColor = true;
             // 
+            // deleteFeederButton
+            // 
+            this.deleteFeederButton.Location = new System.Drawing.Point(319, 228);
+            this.deleteFeederButton.Name = "deleteFeederButton";
+            this.deleteFeederButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteFeederButton.TabIndex = 26;
+            this.deleteFeederButton.Text = "Delete";
+            this.deleteFeederButton.UseVisualStyleBackColor = true;
+            this.deleteFeederButton.Click += new System.EventHandler(this.deleteFeederButton_Click);
+            // 
+            // deleteFeederCombo
+            // 
+            this.deleteFeederCombo.FormattingEnabled = true;
+            this.deleteFeederCombo.Location = new System.Drawing.Point(213, 228);
+            this.deleteFeederCombo.Name = "deleteFeederCombo";
+            this.deleteFeederCombo.Size = new System.Drawing.Size(100, 23);
+            this.deleteFeederCombo.TabIndex = 25;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(217, 210);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(46, 15);
+            this.label18.TabIndex = 24;
+            this.label18.Text = "Species";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label19.Location = new System.Drawing.Point(213, 189);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(105, 21);
+            this.label19.TabIndex = 23;
+            this.label19.Text = "Delete Feeder";
+            // 
             // addFeeders
             // 
             this.addFeeders.Location = new System.Drawing.Point(389, 135);
@@ -513,6 +589,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.logClearButton);
+            this.tabPage1.Controls.Add(this.logExportButton);
             this.tabPage1.Controls.Add(this.logGrid);
             this.tabPage1.Controls.Add(this.label15);
             this.tabPage1.Controls.Add(this.feedLogReptileCombo);
@@ -523,6 +601,26 @@
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Feed Log";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // logClearButton
+            // 
+            this.logClearButton.Location = new System.Drawing.Point(214, 21);
+            this.logClearButton.Name = "logClearButton";
+            this.logClearButton.Size = new System.Drawing.Size(75, 23);
+            this.logClearButton.TabIndex = 5;
+            this.logClearButton.Text = "Clear";
+            this.logClearButton.UseVisualStyleBackColor = true;
+            this.logClearButton.Click += new System.EventHandler(this.logClearButton_Click);
+            // 
+            // logExportButton
+            // 
+            this.logExportButton.Location = new System.Drawing.Point(133, 20);
+            this.logExportButton.Name = "logExportButton";
+            this.logExportButton.Size = new System.Drawing.Size(75, 23);
+            this.logExportButton.TabIndex = 4;
+            this.logExportButton.Text = "Export";
+            this.logExportButton.UseVisualStyleBackColor = true;
+            this.logExportButton.Click += new System.EventHandler(this.logExportButton_Click);
             // 
             // logGrid
             // 
@@ -585,80 +683,6 @@
             this.feedLogReptileCombo.Size = new System.Drawing.Size(121, 23);
             this.feedLogReptileCombo.TabIndex = 0;
             this.feedLogReptileCombo.SelectedIndexChanged += new System.EventHandler(this.feedLogReptileCombo_SelectedIndexChanged);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(320, 242);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(106, 21);
-            this.label16.TabIndex = 19;
-            this.label16.Text = "Delete Reptile";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(324, 263);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(78, 15);
-            this.label17.TabIndex = 20;
-            this.label17.Text = "Reptile Name";
-            // 
-            // deleteReptileCombo
-            // 
-            this.deleteReptileCombo.FormattingEnabled = true;
-            this.deleteReptileCombo.Location = new System.Drawing.Point(324, 281);
-            this.deleteReptileCombo.Name = "deleteReptileCombo";
-            this.deleteReptileCombo.Size = new System.Drawing.Size(78, 23);
-            this.deleteReptileCombo.TabIndex = 21;
-            // 
-            // deleteReptileButton
-            // 
-            this.deleteReptileButton.Location = new System.Drawing.Point(408, 281);
-            this.deleteReptileButton.Name = "deleteReptileButton";
-            this.deleteReptileButton.Size = new System.Drawing.Size(75, 23);
-            this.deleteReptileButton.TabIndex = 22;
-            this.deleteReptileButton.Text = "Delete";
-            this.deleteReptileButton.UseVisualStyleBackColor = true;
-            this.deleteReptileButton.Click += new System.EventHandler(this.deleteReptileButton_Click);
-            // 
-            // deleteFeederButton
-            // 
-            this.deleteFeederButton.Location = new System.Drawing.Point(319, 228);
-            this.deleteFeederButton.Name = "deleteFeederButton";
-            this.deleteFeederButton.Size = new System.Drawing.Size(75, 23);
-            this.deleteFeederButton.TabIndex = 26;
-            this.deleteFeederButton.Text = "Delete";
-            this.deleteFeederButton.UseVisualStyleBackColor = true;
-            this.deleteFeederButton.Click += new System.EventHandler(this.deleteFeederButton_Click);
-            // 
-            // deleteFeederCombo
-            // 
-            this.deleteFeederCombo.FormattingEnabled = true;
-            this.deleteFeederCombo.Location = new System.Drawing.Point(213, 228);
-            this.deleteFeederCombo.Name = "deleteFeederCombo";
-            this.deleteFeederCombo.Size = new System.Drawing.Size(100, 23);
-            this.deleteFeederCombo.TabIndex = 25;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(217, 210);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(46, 15);
-            this.label18.TabIndex = 24;
-            this.label18.Text = "Species";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label19.Location = new System.Drawing.Point(213, 189);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(105, 21);
-            this.label19.TabIndex = 23;
-            this.label19.Text = "Delete Feeder";
             // 
             // ReptitoireForm
             // 
@@ -747,5 +771,7 @@
         private ComboBox deleteFeederCombo;
         private Label label18;
         private Label label19;
+        private Button logClearButton;
+        private Button logExportButton;
     }
 }

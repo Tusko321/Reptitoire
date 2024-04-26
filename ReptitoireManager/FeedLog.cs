@@ -79,5 +79,22 @@ namespace Reptitoire.ReptitoireManager
 
             fs.Close();
         }
+
+        /// <summary>
+        /// Returns a reptiles events as pure text
+        /// </summary>
+        /// <param name="reptileFeedEvents"></param>
+        /// <returns></returns>
+        public string ToTXT(List<FeedLogInfo> reptileFeedEvents)
+        {
+            string text = "";
+
+            foreach(FeedLogInfo fli in reptileFeedEvents)
+            {
+                text += fli.datetime + "\t" + fli.feederSpecies + "(" + fli.amount + ")\n"; 
+            }
+
+            return text;
+        }
     }
 }

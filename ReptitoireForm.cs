@@ -182,5 +182,32 @@ namespace Reptitoire
             UpdateFeederComboBoxes();
             UpdateFeederGridList();
         }
+
+        // Clear a reptiles feed history
+        private void logClearButton_Click(object sender, EventArgs e)
+        {
+            if (feedLogReptileCombo.Text == string.Empty) return;
+
+            manager.ClearReptileLog(feedLogReptileCombo.Text);
+
+            feedLogReptileCombo.ResetText();
+        }
+
+        // Export a reptiles feed history to a txt
+        private void logExportButton_Click(object sender, EventArgs e)
+        {
+            if (feedLogReptileCombo.Text == string.Empty) return;
+
+            using(SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "txt files (*.txt)|*.txt";
+                sfd.FilterIndex = 0;
+
+                if(sfd.ShowDialog() == DialogResult.OK)
+                {
+                    File.WriteAllText(sfd.FileName, manager.GetLog().ToTXT(manager.GetLog().GetReptileLogs(feedLogReptileCombo.Text)));
+                }
+            }
+        }
     }
 }

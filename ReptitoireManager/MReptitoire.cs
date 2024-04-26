@@ -2,6 +2,7 @@
 using Reptitoire.ReptitoireManager.Feeder;
 using System.Text;
 using System.Text.Json;
+using System.Xml.Linq;
 
 namespace Reptitoire.ReptitoireManager
 {
@@ -152,7 +153,12 @@ namespace Reptitoire.ReptitoireManager
         {
             reptiles.RemoveAt(GetReptileIndex(name));
 
-            foreach(FeedLogInfo e in feedLog.GetReptileLogs(name))
+            ClearReptileLog(name);
+        }
+
+        public void ClearReptileLog(string name)
+        {
+            foreach (FeedLogInfo e in feedLog.GetReptileLogs(name))
             {
                 feedLog.Remove(e);
             }
