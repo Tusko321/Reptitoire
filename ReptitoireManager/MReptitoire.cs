@@ -2,7 +2,6 @@
 using Reptitoire.ReptitoireManager.Feeder;
 using System.Text;
 using System.Text.Json;
-using System.Xml.Linq;
 
 namespace Reptitoire.ReptitoireManager
 {
@@ -156,6 +155,10 @@ namespace Reptitoire.ReptitoireManager
             ClearReptileLog(name);
         }
 
+        /// <summary>
+        /// Clears a reptiles feed log
+        /// </summary>
+        /// <param name="name"></param>
         public void ClearReptileLog(string name)
         {
             foreach (FeedLogInfo e in feedLog.GetReptileLogs(name))
