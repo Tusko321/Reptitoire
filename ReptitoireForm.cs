@@ -62,7 +62,7 @@ namespace Reptitoire
 
             feedReptileNameCombo.ResetText();
             feedFeederSpeciesCombo.ResetText();
-            feedAmount.ResetText();
+            feedAmount.Value = 0;
 
             UpdateFeederGridList();
             UpdateReptileGridList();
