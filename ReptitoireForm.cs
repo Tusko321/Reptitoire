@@ -1,5 +1,6 @@
 using Reptitoire.ReptitoireManager;
 using Reptitoire.ReptitoireManager.Feeder;
+using Reptitoire.ReptitoireManager.FeedEvents;
 using Reptitoire.ReptitoireManager.Reptile;
 using System.Reflection;
 
@@ -151,9 +152,14 @@ namespace Reptitoire
         {
             logGrid.Rows.Clear();
 
-            foreach (FeedLogInfo logInfo in manager.GetLog().GetReptileLogs(feedLogReptileCombo.Text))
+            List<FeedLogInfo> list = manager.GetLog().GetReptileLogs(feedLogReptileCombo.Text);
+            feedLogLoadProgress.Maximum = list.Count;
+            feedLogLoadProgress.Value = 0;
+
+            foreach (FeedLogInfo logInfo in list)
             {
                 logGrid.Rows.Add(logInfo.datetime, logInfo.reptileName, logInfo.feederSpecies, logInfo.amount);
+                feedLogLoadProgress.PerformStep();
             }
         }
 

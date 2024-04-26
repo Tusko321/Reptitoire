@@ -1,10 +1,10 @@
 ﻿using System.Text;
 using System.Text.Json;
 
-namespace Reptitoire.ReptitoireManager
+namespace Reptitoire.ReptitoireManager.FeedEvents
 {
     /// <summary>
-    /// Serializable log info list for JSON conversion-
+    /// Serializable log info list for JSON conversion
     /// </summary>
     public class FeedLog
     {
@@ -17,7 +17,7 @@ namespace Reptitoire.ReptitoireManager
             if (File.Exists(logPath))
             {
                 FileStream fs = File.Open(logPath, FileMode.Open);
-                FeedLogInfo[]? fArr = JsonSerializer.Deserialize<FeedLogInfo[]>(fs);
+                FeedLogInfo[] fArr = JsonSerializer.Deserialize<FeedLogInfo[]>(fs);
                 foreach (FeedLogInfo feed in fArr)
                 {
                     log.Add(feed);
@@ -35,7 +35,7 @@ namespace Reptitoire.ReptitoireManager
         {
             List<FeedLogInfo> list = new List<FeedLogInfo>();
 
-            for(int i = 0; i < log.Count; i++)
+            for (int i = 0; i < log.Count; i++)
             {
                 if (reptileName.Equals(log[i].reptileName))
                 {
@@ -89,9 +89,9 @@ namespace Reptitoire.ReptitoireManager
         {
             string text = "";
 
-            foreach(FeedLogInfo fli in reptileFeedEvents)
+            foreach (FeedLogInfo fli in reptileFeedEvents)
             {
-                text += fli.datetime + "\t" + fli.feederSpecies + "(" + fli.amount + ")\n"; 
+                text += fli.datetime + "\t" + fli.feederSpecies + "(" + fli.amount + ")\n";
             }
 
             return text;

@@ -79,6 +79,7 @@
             this.FeederSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.feedLogLoadProgress = new System.Windows.Forms.ProgressBar();
             this.logClearButton = new System.Windows.Forms.Button();
             this.logExportButton = new System.Windows.Forms.Button();
             this.logGrid = new System.Windows.Forms.DataGridView();
@@ -589,6 +590,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.feedLogLoadProgress);
             this.tabPage1.Controls.Add(this.logClearButton);
             this.tabPage1.Controls.Add(this.logExportButton);
             this.tabPage1.Controls.Add(this.logGrid);
@@ -602,9 +604,17 @@
             this.tabPage1.Text = "Feed Log";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // feedLogLoadProgress
+            // 
+            this.feedLogLoadProgress.Location = new System.Drawing.Point(133, 21);
+            this.feedLogLoadProgress.Name = "feedLogLoadProgress";
+            this.feedLogLoadProgress.Size = new System.Drawing.Size(113, 23);
+            this.feedLogLoadProgress.Step = 1;
+            this.feedLogLoadProgress.TabIndex = 6;
+            // 
             // logClearButton
             // 
-            this.logClearButton.Location = new System.Drawing.Point(214, 21);
+            this.logClearButton.Location = new System.Drawing.Point(333, 20);
             this.logClearButton.Name = "logClearButton";
             this.logClearButton.Size = new System.Drawing.Size(75, 23);
             this.logClearButton.TabIndex = 5;
@@ -614,7 +624,7 @@
             // 
             // logExportButton
             // 
-            this.logExportButton.Location = new System.Drawing.Point(133, 20);
+            this.logExportButton.Location = new System.Drawing.Point(252, 20);
             this.logExportButton.Name = "logExportButton";
             this.logExportButton.Size = new System.Drawing.Size(75, 23);
             this.logExportButton.TabIndex = 4;
@@ -773,5 +783,6 @@
         private Label label19;
         private Button logClearButton;
         private Button logExportButton;
+        private ProgressBar feedLogLoadProgress;
     }
 }

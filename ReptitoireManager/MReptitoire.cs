@@ -2,6 +2,7 @@
 using Reptitoire.ReptitoireManager.Feeder;
 using System.Text;
 using System.Text.Json;
+using Reptitoire.ReptitoireManager.FeedEvents;
 
 namespace Reptitoire.ReptitoireManager
 {
@@ -33,7 +34,7 @@ namespace Reptitoire.ReptitoireManager
             if (File.Exists(reptileSaveDir))
             {
                 FileStream fs = File.Open(reptileSaveDir, FileMode.Open);
-                ReptileList? rArr = JsonSerializer.Deserialize<ReptileList>(fs);
+                ReptileList rArr = JsonSerializer.Deserialize<ReptileList>(fs);
                 foreach (ReptileInfo reptile in rArr.List)
                 {
                     reptiles.Add(reptile);
@@ -46,7 +47,7 @@ namespace Reptitoire.ReptitoireManager
             if (File.Exists(feederSaveDir))
             {
                 FileStream fs = File.Open(feederSaveDir, FileMode.Open);
-                FeederList? fArr = JsonSerializer.Deserialize<FeederList>(fs);
+                FeederList fArr = JsonSerializer.Deserialize<FeederList>(fs);
                 foreach(FeederInfo feeder in fArr.List)
                 {
                     feeders.Add(feeder);

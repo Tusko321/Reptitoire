@@ -1,9 +1,9 @@
-﻿namespace Reptitoire.ReptitoireManager
+﻿namespace Reptitoire.ReptitoireManager.FeedEvents
 {
     /// <summary>
     /// Holds the information for a feed log event
     /// </summary>
-    [System.Serializable]
+    [Serializable]
     public class FeedLogInfo
     {
         public string datetime { get; set; }
