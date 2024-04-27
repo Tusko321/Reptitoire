@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <AssemblyVersion>0.1.1</AssemblyVersion>
+    <AssemblyVersion>0.2</AssemblyVersion>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows10.0.17763.0</TargetFramework>
+    <TargetFramework>net6.0-windows7.0</TargetFramework>
     <Nullable>disable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -13,8 +13,8 @@
     <DelaySign>False</DelaySign>
     <StartupObject>Reptitoire.Program</StartupObject>
     <ApplicationIcon>reptitoire.ico</ApplicationIcon>
-    <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
-    <FileVersion>0.1.1</FileVersion>
+    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+    <FileVersion>0.2</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

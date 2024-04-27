@@ -191,7 +191,7 @@ namespace Reptitoire
 
                         feedLogLoadProgress.PerformStep();
                     }), new object[2] { this, null });
-                    Thread.Sleep(1);
+                    //Thread.Sleep(1);
                 }
                 Invoke(new EventHandler(delegate (object sender, EventArgs e)
                 {
