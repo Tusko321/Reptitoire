@@ -89,6 +89,7 @@
             this.feedLogAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label15 = new System.Windows.Forms.Label();
             this.feedLogReptileCombo = new System.Windows.Forms.ComboBox();
+            this.exportCSVButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.reptileInfoTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.feedAmount)).BeginInit();
@@ -591,6 +592,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.tabPage1.Controls.Add(this.exportCSVButton);
             this.tabPage1.Controls.Add(this.feedLogLoadProgress);
             this.tabPage1.Controls.Add(this.logClearButton);
             this.tabPage1.Controls.Add(this.logExportButton);
@@ -614,7 +616,7 @@
             // 
             // logClearButton
             // 
-            this.logClearButton.Location = new System.Drawing.Point(333, 20);
+            this.logClearButton.Location = new System.Drawing.Point(252, 20);
             this.logClearButton.Name = "logClearButton";
             this.logClearButton.Size = new System.Drawing.Size(75, 23);
             this.logClearButton.TabIndex = 5;
@@ -624,11 +626,11 @@
             // 
             // logExportButton
             // 
-            this.logExportButton.Location = new System.Drawing.Point(252, 20);
+            this.logExportButton.Location = new System.Drawing.Point(333, 20);
             this.logExportButton.Name = "logExportButton";
             this.logExportButton.Size = new System.Drawing.Size(75, 23);
             this.logExportButton.TabIndex = 4;
-            this.logExportButton.Text = "Export";
+            this.logExportButton.Text = "Export Text";
             this.logExportButton.UseVisualStyleBackColor = true;
             this.logExportButton.Click += new System.EventHandler(this.logExportButton_Click);
             // 
@@ -693,6 +695,16 @@
             this.feedLogReptileCombo.Size = new System.Drawing.Size(121, 23);
             this.feedLogReptileCombo.TabIndex = 0;
             this.feedLogReptileCombo.SelectedIndexChanged += new System.EventHandler(this.feedLogReptileCombo_SelectedIndexChanged);
+            // 
+            // exportCSVButton
+            // 
+            this.exportCSVButton.Location = new System.Drawing.Point(414, 20);
+            this.exportCSVButton.Name = "exportCSVButton";
+            this.exportCSVButton.Size = new System.Drawing.Size(75, 23);
+            this.exportCSVButton.TabIndex = 7;
+            this.exportCSVButton.Text = "Export CSV";
+            this.exportCSVButton.UseVisualStyleBackColor = true;
+            this.exportCSVButton.Click += new System.EventHandler(this.exportCSVButton_Click);
             // 
             // ReptitoireForm
             // 
@@ -786,5 +798,6 @@
         private Button logClearButton;
         private Button logExportButton;
         private ProgressBar feedLogLoadProgress;
+        private Button exportCSVButton;
     }
 }

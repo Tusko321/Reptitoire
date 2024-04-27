@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Text.Json;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Reptitoire.ReptitoireManager.FeedEvents
 {
@@ -87,14 +88,31 @@ namespace Reptitoire.ReptitoireManager.FeedEvents
         /// <returns></returns>
         public string ToTXT(List<FeedLogInfo> reptileFeedEvents)
         {
-            string text = "";
+            StringBuilder text = new StringBuilder();
 
             foreach (FeedLogInfo fli in reptileFeedEvents)
             {
-                text += fli.datetime + "\t" + fli.feederSpecies + "(" + fli.amount + ")\n";
+                text.AppendLine("\"" + fli.datetime + "\"\t\"" + fli.feederSpecies + "\"(\"" + fli.amount + "\")");
             }
 
-            return text;
+            return text.ToString();
+        }
+
+        /// <summary>
+        /// Returns a reptiles events as CSV formatted text
+        /// </summary>
+        /// <param name="reptileFeedEvents"></param>
+        /// <returns></returns>
+        public string ToCSV(List<FeedLogInfo> reptileFeedEvents)
+        {
+            StringBuilder csv = new StringBuilder("Date,Feeder,Amount\n");
+
+            foreach (FeedLogInfo fli in reptileFeedEvents)
+            {
+                csv.AppendLine("\"" + fli.datetime + "\",\"" + fli.feederSpecies + "\",\"" + fli.amount.ToString() + "\"");
+            }
+
+            return csv.ToString();
         }
     }
 }

@@ -212,7 +212,7 @@ namespace Reptitoire
             feedLogReptileCombo.ResetText();
         }
 
-        // Export a reptiles feed history to a txt
+        // Export a reptiles feed history to a TXT
         private void logExportButton_Click(object sender, EventArgs e)
         {
             if (feedLogReptileCombo.Text == string.Empty) return;
@@ -225,6 +225,23 @@ namespace Reptitoire
                 if(sfd.ShowDialog() == DialogResult.OK)
                 {
                     File.WriteAllText(sfd.FileName, manager.GetLog().ToTXT(manager.GetLog().GetReptileLogs(feedLogReptileCombo.Text)));
+                }
+            }
+        }
+
+        // Export a reptiles feed history to a CSV
+        private void exportCSVButton_Click(object sender, EventArgs e)
+        {
+            if (feedLogReptileCombo.Text == string.Empty) return;
+
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "csv files (*.csv)|*.csv";
+                sfd.FilterIndex = 0;
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    File.WriteAllText(sfd.FileName, manager.GetLog().ToCSV(manager.GetLog().GetReptileLogs(feedLogReptileCombo.Text)));
                 }
             }
         }
