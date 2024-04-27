@@ -82,7 +82,7 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.FeederSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.feedLogTab = new System.Windows.Forms.TabPage();
             this.feedLogChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.exportCSVButton = new System.Windows.Forms.Button();
             this.feedLogLoadProgress = new System.Windows.Forms.ProgressBar();
@@ -95,6 +95,10 @@
             this.feedLogAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label15 = new System.Windows.Forms.Label();
             this.feedLogReptileCombo = new System.Windows.Forms.ComboBox();
+            this.orderTab = new System.Windows.Forms.TabPage();
+            this.dubiaLinkButton = new System.Windows.Forms.Button();
+            this.flukersLinkButton = new System.Windows.Forms.Button();
+            this.disclaimer = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.reptileInfoTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.feedAmount)).BeginInit();
@@ -103,16 +107,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.addFeedersAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newFeederAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.tabPage1.SuspendLayout();
+            this.feedLogTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.feedLogChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
+            this.orderTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.reptileInfoTab);
             this.tabControl1.Controls.Add(this.feederInfoTab);
-            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.feedLogTab);
+            this.tabControl1.Controls.Add(this.orderTab);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -595,23 +601,23 @@
             this.Amount.Name = "Amount";
             this.Amount.ReadOnly = true;
             // 
-            // tabPage1
+            // feedLogTab
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.tabPage1.Controls.Add(this.feedLogChart);
-            this.tabPage1.Controls.Add(this.exportCSVButton);
-            this.tabPage1.Controls.Add(this.feedLogLoadProgress);
-            this.tabPage1.Controls.Add(this.logClearButton);
-            this.tabPage1.Controls.Add(this.logExportButton);
-            this.tabPage1.Controls.Add(this.logGrid);
-            this.tabPage1.Controls.Add(this.label15);
-            this.tabPage1.Controls.Add(this.feedLogReptileCombo);
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(768, 398);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "Feed Log";
+            this.feedLogTab.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.feedLogTab.Controls.Add(this.feedLogChart);
+            this.feedLogTab.Controls.Add(this.exportCSVButton);
+            this.feedLogTab.Controls.Add(this.feedLogLoadProgress);
+            this.feedLogTab.Controls.Add(this.logClearButton);
+            this.feedLogTab.Controls.Add(this.logExportButton);
+            this.feedLogTab.Controls.Add(this.logGrid);
+            this.feedLogTab.Controls.Add(this.label15);
+            this.feedLogTab.Controls.Add(this.feedLogReptileCombo);
+            this.feedLogTab.Location = new System.Drawing.Point(4, 24);
+            this.feedLogTab.Name = "feedLogTab";
+            this.feedLogTab.Padding = new System.Windows.Forms.Padding(3);
+            this.feedLogTab.Size = new System.Drawing.Size(768, 398);
+            this.feedLogTab.TabIndex = 2;
+            this.feedLogTab.Text = "Feed Log";
             // 
             // feedLogChart
             // 
@@ -733,6 +739,48 @@
             this.feedLogReptileCombo.TabIndex = 0;
             this.feedLogReptileCombo.SelectedIndexChanged += new System.EventHandler(this.feedLogReptileCombo_SelectedIndexChanged);
             // 
+            // orderTab
+            // 
+            this.orderTab.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.orderTab.Controls.Add(this.disclaimer);
+            this.orderTab.Controls.Add(this.flukersLinkButton);
+            this.orderTab.Controls.Add(this.dubiaLinkButton);
+            this.orderTab.Location = new System.Drawing.Point(4, 24);
+            this.orderTab.Name = "orderTab";
+            this.orderTab.Padding = new System.Windows.Forms.Padding(3);
+            this.orderTab.Size = new System.Drawing.Size(768, 398);
+            this.orderTab.TabIndex = 3;
+            this.orderTab.Text = "Order";
+            // 
+            // dubiaLinkButton
+            // 
+            this.dubiaLinkButton.Image = ((System.Drawing.Image)(resources.GetObject("dubiaLinkButton.Image")));
+            this.dubiaLinkButton.Location = new System.Drawing.Point(6, 6);
+            this.dubiaLinkButton.Name = "dubiaLinkButton";
+            this.dubiaLinkButton.Size = new System.Drawing.Size(756, 140);
+            this.dubiaLinkButton.TabIndex = 0;
+            this.dubiaLinkButton.UseVisualStyleBackColor = true;
+            this.dubiaLinkButton.Click += new System.EventHandler(this.dubiaLinkButton_Click);
+            // 
+            // flukersLinkButton
+            // 
+            this.flukersLinkButton.Image = ((System.Drawing.Image)(resources.GetObject("flukersLinkButton.Image")));
+            this.flukersLinkButton.Location = new System.Drawing.Point(6, 152);
+            this.flukersLinkButton.Name = "flukersLinkButton";
+            this.flukersLinkButton.Size = new System.Drawing.Size(756, 140);
+            this.flukersLinkButton.TabIndex = 1;
+            this.flukersLinkButton.UseVisualStyleBackColor = true;
+            this.flukersLinkButton.Click += new System.EventHandler(this.flukersLinkButton_Click);
+            // 
+            // disclaimer
+            // 
+            this.disclaimer.AutoSize = true;
+            this.disclaimer.Location = new System.Drawing.Point(3, 380);
+            this.disclaimer.Name = "disclaimer";
+            this.disclaimer.Size = new System.Drawing.Size(171, 15);
+            this.disclaimer.TabIndex = 2;
+            this.disclaimer.Text = "(Not sponsored, just reputable)";
+            // 
             // ReptitoireForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -756,10 +804,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.addFeedersAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.newFeederAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.feedLogTab.ResumeLayout(false);
+            this.feedLogTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.feedLogChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).EndInit();
+            this.orderTab.ResumeLayout(false);
+            this.orderTab.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -807,7 +857,7 @@
         private DataGridViewTextBoxColumn Sex;
         private DataGridViewTextBoxColumn Species;
         private DataGridViewTextBoxColumn FedToday;
-        private TabPage tabPage1;
+        private TabPage feedLogTab;
         private DataGridView logGrid;
         private Label label15;
         private ComboBox feedLogReptileCombo;
@@ -828,5 +878,9 @@
         private ProgressBar feedLogLoadProgress;
         private Button exportCSVButton;
         private System.Windows.Forms.DataVisualization.Charting.Chart feedLogChart;
+        private TabPage orderTab;
+        private Button flukersLinkButton;
+        private Button dubiaLinkButton;
+        private Label disclaimer;
     }
 }

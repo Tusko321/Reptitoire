@@ -167,7 +167,7 @@ namespace Reptitoire
             }
             catch (Exception ex)
             {
-                logThread.Interrupt();
+                logThread.Interrupt(); // If this thread got hung anywhere just interrupt to be safe
             }
         }
 
@@ -207,8 +207,8 @@ namespace Reptitoire
         // Save before close
         private void ReptitoireForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(logThread.IsAlive)
-                logThread.Interrupt();
+            if(logThread != null && logThread.IsAlive)
+                logThread.Interrupt(); // We cant save if this thread is spooled
             manager.Save();
         }
 
@@ -289,6 +289,18 @@ namespace Reptitoire
                     File.WriteAllText(sfd.FileName, manager.GetLog().ToCSV(manager.GetLog().GetReptileLogs(feedLogReptileCombo.Text)));
                 }
             }
+        }
+
+        // Open dubia.com
+        private void dubiaLinkButton_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("https://www.dubia.com") { UseShellExecute = true });
+        }
+
+        // Open flukerfarms.com
+        private void flukersLinkButton_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("https://www.flukerfarms.com") { UseShellExecute = true });
         }
     }
 }
