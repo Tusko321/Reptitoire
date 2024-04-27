@@ -28,6 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 2D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 10D);
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReptitoireForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.reptileInfoTab = new System.Windows.Forms.TabPage();
@@ -79,6 +85,8 @@
             this.FeederSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.feedLogChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.exportCSVButton = new System.Windows.Forms.Button();
             this.feedLogLoadProgress = new System.Windows.Forms.ProgressBar();
             this.logClearButton = new System.Windows.Forms.Button();
             this.logExportButton = new System.Windows.Forms.Button();
@@ -89,7 +97,6 @@
             this.feedLogAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label15 = new System.Windows.Forms.Label();
             this.feedLogReptileCombo = new System.Windows.Forms.ComboBox();
-            this.exportCSVButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.reptileInfoTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.feedAmount)).BeginInit();
@@ -99,6 +106,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.newFeederAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.feedLogChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -592,6 +600,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.tabPage1.Controls.Add(this.feedLogChart);
             this.tabPage1.Controls.Add(this.exportCSVButton);
             this.tabPage1.Controls.Add(this.feedLogLoadProgress);
             this.tabPage1.Controls.Add(this.logClearButton);
@@ -605,6 +614,40 @@
             this.tabPage1.Size = new System.Drawing.Size(768, 398);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Feed Log";
+            // 
+            // feedLogChart
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.feedLogChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.feedLogChart.Legends.Add(legend1);
+            this.feedLogChart.Location = new System.Drawing.Point(414, 58);
+            this.feedLogChart.Name = "feedLogChart";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            dataPoint2.AxisLabel = "25.2%";
+            dataPoint2.Label = "Cricket";
+            series1.Points.Add(dataPoint1);
+            series1.Points.Add(dataPoint2);
+            this.feedLogChart.Series.Add(series1);
+            this.feedLogChart.Size = new System.Drawing.Size(348, 334);
+            this.feedLogChart.TabIndex = 8;
+            this.feedLogChart.Text = "Diet";
+            title1.Name = "Title1";
+            title1.Text = "Diet";
+            this.feedLogChart.Titles.Add(title1);
+            // 
+            // exportCSVButton
+            // 
+            this.exportCSVButton.Location = new System.Drawing.Point(414, 20);
+            this.exportCSVButton.Name = "exportCSVButton";
+            this.exportCSVButton.Size = new System.Drawing.Size(75, 23);
+            this.exportCSVButton.TabIndex = 7;
+            this.exportCSVButton.Text = "Export CSV";
+            this.exportCSVButton.UseVisualStyleBackColor = true;
+            this.exportCSVButton.Click += new System.EventHandler(this.exportCSVButton_Click);
             // 
             // feedLogLoadProgress
             // 
@@ -696,16 +739,6 @@
             this.feedLogReptileCombo.TabIndex = 0;
             this.feedLogReptileCombo.SelectedIndexChanged += new System.EventHandler(this.feedLogReptileCombo_SelectedIndexChanged);
             // 
-            // exportCSVButton
-            // 
-            this.exportCSVButton.Location = new System.Drawing.Point(414, 20);
-            this.exportCSVButton.Name = "exportCSVButton";
-            this.exportCSVButton.Size = new System.Drawing.Size(75, 23);
-            this.exportCSVButton.TabIndex = 7;
-            this.exportCSVButton.Text = "Export CSV";
-            this.exportCSVButton.UseVisualStyleBackColor = true;
-            this.exportCSVButton.Click += new System.EventHandler(this.exportCSVButton_Click);
-            // 
             // ReptitoireForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -731,6 +764,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.feedLogChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).EndInit();
             this.ResumeLayout(false);
 
@@ -799,5 +833,6 @@
         private Button logExportButton;
         private ProgressBar feedLogLoadProgress;
         private Button exportCSVButton;
+        private System.Windows.Forms.DataVisualization.Charting.Chart feedLogChart;
     }
 }

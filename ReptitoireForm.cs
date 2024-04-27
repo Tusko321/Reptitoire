@@ -2,7 +2,6 @@ using Reptitoire.ReptitoireManager;
 using Reptitoire.ReptitoireManager.Feeder;
 using Reptitoire.ReptitoireManager.FeedEvents;
 using Reptitoire.ReptitoireManager.Reptile;
-using System.Linq;
 using System.Reflection;
 
 namespace Reptitoire
@@ -10,13 +9,17 @@ namespace Reptitoire
     public partial class ReptitoireForm : Form
     {
         private MReptitoire manager;
+        private FeedLogChart logChart;
         private string currentReptileLog;
+        private Thread logThread;
+
         // Init form
         public ReptitoireForm()
         {
             manager = new MReptitoire();
             InitializeComponent();
             this.Text = this.Text + " " + Assembly.GetExecutingAssembly().GetName().Version;
+            logChart = new FeedLogChart(feedLogChart);
 
             // Force refresh of all grids and combos
             UpdateReptileGridList();
@@ -60,6 +63,8 @@ namespace Reptitoire
             if (feedLogReptileCombo.Text.Equals(feedReptileNameCombo.Text))
             {
                 logGrid.Rows.Add(DateTime.Now.ToString(), feedReptileNameCombo.Text, feedFeederSpeciesCombo.Text, (int)feedAmount.Value);
+                logChart.AddFeeder(feedFeederSpeciesCombo.Text, (int)feedAmount.Value);
+                logChart.UpdatePercentages();
             }
 
             feedReptileNameCombo.ResetText();
@@ -152,39 +157,58 @@ namespace Reptitoire
         private void feedLogReptileCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
             logGrid.Rows.Clear();
+            logChart.Clear();
             currentReptileLog = feedLogReptileCombo.Text;
-            new Thread(new ThreadStart(LoadFeedLog)).Start();
+            logThread = new Thread(new ThreadStart(LoadFeedLog));
+
+            try
+            {
+                logThread.Start();
+            }
+            catch (Exception ex)
+            {
+                logThread.Interrupt();
+            }
         }
 
         private void LoadFeedLog()
         {
-            List<FeedLogInfo> list = manager.GetLog().GetReptileLogs(currentReptileLog);
-            Invoke(new EventHandler(delegate (object sender, EventArgs e)
+            try
             {
-                feedLogLoadProgress.Maximum = list.Count;
-                feedLogLoadProgress.Value = 0;
-            }), new object[2] { this, null });
-
-            //long bytes = 0;
-            for(int i = 0; i < list.Count; i++)
-            {
+                List<FeedLogInfo> list = manager.GetLog().GetReptileLogs(currentReptileLog);
                 Invoke(new EventHandler(delegate (object sender, EventArgs e)
                 {
-                    logGrid.Rows.Add(list[i].datetime, list[i].reptileName, list[i].feederSpecies, list[i].amount);
-                    //bytes += System.Text.Encoding.ASCII.GetByteCount(list[i].datetime) +
-                    //         System.Text.Encoding.ASCII.GetByteCount(list[i].reptileName) +
-                    //         System.Text.Encoding.ASCII.GetByteCount(list[i].feederSpecies) +
-                    //         sizeof(int);
-                    feedLogLoadProgress.PerformStep();
+                    feedLogLoadProgress.Maximum = list.Count;
+                    feedLogLoadProgress.Value = 0;
                 }), new object[2] { this, null });
-                //Thread.Sleep(1);
+
+                for (int i = 0; i < list.Count; i++)
+                {
+                    Invoke(new EventHandler(delegate (object sender, EventArgs e)
+                    {
+                        logGrid.Rows.Add(list[i].datetime, list[i].reptileName, list[i].feederSpecies, list[i].amount);
+                        logChart.AddFeeder(list[i].feederSpecies, list[i].amount);
+
+                        feedLogLoadProgress.PerformStep();
+                    }), new object[2] { this, null });
+                    Thread.Sleep(1);
+                }
+                Invoke(new EventHandler(delegate (object sender, EventArgs e)
+                {
+                    logChart.UpdatePercentages();
+                }), new object[2] { this, null });
             }
-            //GC.AddMemoryPressure(bytes);
+            catch (Exception ex)
+            {
+
+            }
         }
 
         // Save before close
         private void ReptitoireForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if(logThread.IsAlive)
+                logThread.Interrupt();
             manager.Save();
         }
 
@@ -199,6 +223,7 @@ namespace Reptitoire
             if (feedLogReptileCombo.Text.Equals(deleteReptileCombo.Text))
             {
                 logGrid.Rows.Clear();
+                logChart.Clear();
                 feedLogReptileCombo.ResetText();
             }
 
@@ -227,6 +252,7 @@ namespace Reptitoire
             if (feedLogReptileCombo.Text == string.Empty) return;
 
             manager.ClearReptileLog(feedLogReptileCombo.Text);
+            logChart.Clear();
 
             feedLogReptileCombo.ResetText();
         }
