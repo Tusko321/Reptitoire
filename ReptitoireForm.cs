@@ -2,6 +2,7 @@ using Reptitoire.ReptitoireManager;
 using Reptitoire.ReptitoireManager.Feeder;
 using Reptitoire.ReptitoireManager.FeedEvents;
 using Reptitoire.ReptitoireManager.Reptile;
+using System.Linq;
 using System.Reflection;
 
 namespace Reptitoire
@@ -9,7 +10,7 @@ namespace Reptitoire
     public partial class ReptitoireForm : Form
     {
         private MReptitoire manager;
-
+        private string currentReptileLog;
         // Init form
         public ReptitoireForm()
         {
@@ -151,16 +152,34 @@ namespace Reptitoire
         private void feedLogReptileCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
             logGrid.Rows.Clear();
+            currentReptileLog = feedLogReptileCombo.Text;
+            new Thread(new ThreadStart(LoadFeedLog)).Start();
+        }
 
-            List<FeedLogInfo> list = manager.GetLog().GetReptileLogs(feedLogReptileCombo.Text);
-            feedLogLoadProgress.Maximum = list.Count;
-            feedLogLoadProgress.Value = 0;
-
-            foreach (FeedLogInfo logInfo in list)
+        private void LoadFeedLog()
+        {
+            List<FeedLogInfo> list = manager.GetLog().GetReptileLogs(currentReptileLog);
+            Invoke(new EventHandler(delegate (object sender, EventArgs e)
             {
-                logGrid.Rows.Add(logInfo.datetime, logInfo.reptileName, logInfo.feederSpecies, logInfo.amount);
-                feedLogLoadProgress.PerformStep();
+                feedLogLoadProgress.Maximum = list.Count;
+                feedLogLoadProgress.Value = 0;
+            }), new object[2] { this, null });
+
+            //long bytes = 0;
+            for(int i = 0; i < list.Count; i++)
+            {
+                Invoke(new EventHandler(delegate (object sender, EventArgs e)
+                {
+                    logGrid.Rows.Add(list[i].datetime, list[i].reptileName, list[i].feederSpecies, list[i].amount);
+                    //bytes += System.Text.Encoding.ASCII.GetByteCount(list[i].datetime) +
+                    //         System.Text.Encoding.ASCII.GetByteCount(list[i].reptileName) +
+                    //         System.Text.Encoding.ASCII.GetByteCount(list[i].feederSpecies) +
+                    //         sizeof(int);
+                    feedLogLoadProgress.PerformStep();
+                }), new object[2] { this, null });
+                //Thread.Sleep(1);
             }
+            //GC.AddMemoryPressure(bytes);
         }
 
         // Save before close
