@@ -8,7 +8,10 @@ namespace Reptitoire
 {
     public partial class ReptitoireForm : Form
     {
+        // Manager
         private MReptitoire manager;
+
+        // Log
         private FeedLogChart logChart;
         private string currentReptileLog;
         private Thread logThread;
@@ -28,6 +31,7 @@ namespace Reptitoire
             UpdateReptileComboBoxes();
         }
 
+        #region Reptile
         // Create a new reptile
         private void newReptileButton_Click(object sender, EventArgs e)
         {
@@ -75,6 +79,29 @@ namespace Reptitoire
             UpdateReptileGridList();
         }
 
+        // Delete a reptile
+        private void deleteReptileButton_Click(object sender, EventArgs e)
+        {
+            if (deleteReptileCombo.Text == string.Empty) return;
+
+            manager.DeleteReptile(deleteReptileCombo.Text);
+
+            // Reset log view if selected reptile got deleted
+            if (feedLogReptileCombo.Text.Equals(deleteReptileCombo.Text))
+            {
+                logGrid.Rows.Clear();
+                logChart.Clear();
+                feedLogReptileCombo.ResetText();
+            }
+
+            deleteReptileCombo.ResetText();
+
+            UpdateReptileComboBoxes();
+            UpdateReptileGridList();
+        }
+        #endregion
+
+        #region Feeder
         // Add new feeder species
         private void addNewFeeder_Click(object sender, EventArgs e)
         {
@@ -105,54 +132,21 @@ namespace Reptitoire
             UpdateFeederGridList();
         }
 
-        private void UpdateFeederComboBoxes()
+        // Delete a feeder
+        private void deleteFeederButton_Click(object sender, EventArgs e) 
         {
-            feedFeederSpeciesCombo.Items.Clear();
-            addFeedersCombo.Items.Clear();
-            deleteFeederCombo.Items.Clear();
+            if(deleteFeederCombo.Text == string.Empty) return;
 
-            foreach(FeederInfo feeder in manager.GetFeeders())
-            {
-                feedFeederSpeciesCombo.Items.Add(feeder.species);
-                addFeedersCombo.Items.Add(feeder.species);
-                deleteFeederCombo.Items.Add(feeder.species);
-            }
+            manager.DeleteFeeder(deleteFeederCombo.Text);
+
+            deleteFeederCombo.ResetText();
+
+            UpdateFeederComboBoxes();
+            UpdateFeederGridList();
         }
+        #endregion
 
-        private void UpdateReptileComboBoxes()
-        {
-            feedReptileNameCombo.Items.Clear();
-            feedLogReptileCombo.Items.Clear();
-            deleteReptileCombo.Items.Clear();
-
-            foreach(ReptileInfo reptile in manager.GetReptiles())
-            {
-                feedReptileNameCombo.Items.Add(reptile.name);
-                feedLogReptileCombo.Items.Add(reptile.name);
-                deleteReptileCombo.Items.Add(reptile.name);
-            }
-        }
-
-        private void UpdateReptileGridList()
-        {
-            dataGridView1.Rows.Clear();
-            
-            foreach(ReptileInfo reptile in manager.GetReptiles())
-            {
-                dataGridView1.Rows.Add(reptile.name, reptile.GetAge(), reptile.sex, reptile.species, reptile.WasFedToday());
-            }
-        }
-
-        private void UpdateFeederGridList()
-        {
-            dataGridView2.Rows.Clear();
-
-            foreach(FeederInfo feeder in manager.GetFeeders())
-            {
-                dataGridView2.Rows.Add(feeder.species, feeder.amount);
-            }
-        }
-
+        #region Feed Log
         // When we change the selected reptile in the log tab, we need to refresh the log grid
         private void feedLogReptileCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -169,81 +163,6 @@ namespace Reptitoire
             {
                 logThread.Interrupt(); // If this thread got hung anywhere just interrupt to be safe
             }
-        }
-
-        private void LoadFeedLog()
-        {
-            try
-            {
-                List<FeedLogInfo> list = manager.GetLog().GetReptileLogs(currentReptileLog);
-                Invoke(new EventHandler(delegate (object sender, EventArgs e)
-                {
-                    feedLogLoadProgress.Maximum = list.Count;
-                    feedLogLoadProgress.Value = 0;
-                }), new object[2] { this, null });
-
-                for (int i = 0; i < list.Count; i++)
-                {
-                    Invoke(new EventHandler(delegate (object sender, EventArgs e)
-                    {
-                        logGrid.Rows.Add(list[i].datetime, list[i].reptileName, list[i].feederSpecies, list[i].amount);
-                        logChart.AddFeeder(list[i].feederSpecies, list[i].amount);
-
-                        feedLogLoadProgress.PerformStep();
-                    }), new object[2] { this, null });
-                    //Thread.Sleep(1);
-                }
-                Invoke(new EventHandler(delegate (object sender, EventArgs e)
-                {
-                    logChart.UpdatePercentages();
-                }), new object[2] { this, null });
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
-        // Save before close
-        private void ReptitoireForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if(logThread != null && logThread.IsAlive)
-                logThread.Interrupt(); // We cant save if this thread is spooled
-            manager.Save();
-        }
-
-        // Delete a reptile
-        private void deleteReptileButton_Click(object sender, EventArgs e)
-        {
-            if (deleteReptileCombo.Text == string.Empty) return;
-
-            manager.DeleteReptile(deleteReptileCombo.Text);
-
-            // Reset log view if selected reptile got deleted
-            if (feedLogReptileCombo.Text.Equals(deleteReptileCombo.Text))
-            {
-                logGrid.Rows.Clear();
-                logChart.Clear();
-                feedLogReptileCombo.ResetText();
-            }
-
-            deleteReptileCombo.ResetText();
-
-            UpdateReptileComboBoxes();
-            UpdateReptileGridList();
-        }
-
-        // Delete a feeder
-        private void deleteFeederButton_Click(object sender, EventArgs e) 
-        {
-            if(deleteFeederCombo.Text == string.Empty) return;
-
-            manager.DeleteFeeder(deleteFeederCombo.Text);
-
-            deleteFeederCombo.ResetText();
-
-            UpdateFeederComboBoxes();
-            UpdateFeederGridList();
         }
 
         // Clear a reptiles feed history
@@ -290,7 +209,9 @@ namespace Reptitoire
                 }
             }
         }
+        #endregion
 
+        #region Order
         // Open dubia.com
         private void dubiaLinkButton_Click(object sender, EventArgs e)
         {
@@ -301,6 +222,101 @@ namespace Reptitoire
         private void flukersLinkButton_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("https://www.flukerfarms.com") { UseShellExecute = true });
+        }
+        #endregion
+
+        private void UpdateFeederComboBoxes()
+        {
+            feedFeederSpeciesCombo.Items.Clear();
+            addFeedersCombo.Items.Clear();
+            deleteFeederCombo.Items.Clear();
+
+            foreach (FeederInfo feeder in manager.GetFeeders())
+            {
+                feedFeederSpeciesCombo.Items.Add(feeder.species);
+                addFeedersCombo.Items.Add(feeder.species);
+                deleteFeederCombo.Items.Add(feeder.species);
+            }
+        }
+
+        private void UpdateReptileComboBoxes()
+        {
+            feedReptileNameCombo.Items.Clear();
+            feedLogReptileCombo.Items.Clear();
+            deleteReptileCombo.Items.Clear();
+
+            foreach (ReptileInfo reptile in manager.GetReptiles())
+            {
+                feedReptileNameCombo.Items.Add(reptile.name);
+                feedLogReptileCombo.Items.Add(reptile.name);
+                deleteReptileCombo.Items.Add(reptile.name);
+            }
+        }
+
+        private void UpdateReptileGridList()
+        {
+            dataGridView1.Rows.Clear();
+
+            foreach (ReptileInfo reptile in manager.GetReptiles())
+            {
+                dataGridView1.Rows.Add(reptile.name, reptile.GetAge(), reptile.sex, reptile.species, reptile.WasFedToday());
+            }
+        }
+
+        private void UpdateFeederGridList()
+        {
+            dataGridView2.Rows.Clear();
+
+            foreach (FeederInfo feeder in manager.GetFeeders())
+            {
+                dataGridView2.Rows.Add(feeder.species, feeder.amount);
+            }
+        }
+
+        private void LoadFeedLog()
+        {
+            try
+            {
+                List<FeedLogInfo> list = manager.GetLog().GetReptileLogs(currentReptileLog);
+                Invoke(new EventHandler(delegate (object sender, EventArgs e)
+                {
+                    feedLogLoadProgress.Maximum = list.Count;
+                    feedLogLoadProgress.Value = 0;
+                }), new object[2] { this, null });
+
+                for (int i = 0; i < list.Count; i++)
+                {
+                    Invoke(new EventHandler(delegate (object sender, EventArgs e)
+                    {
+                        logGrid.Rows.Add(list[i].datetime, list[i].reptileName, list[i].feederSpecies, list[i].amount);
+                        logChart.AddFeeder(list[i].feederSpecies, list[i].amount);
+
+                        feedLogLoadProgress.PerformStep();
+                    }), new object[2] { this, null });
+                    //Thread.Sleep(1);
+                }
+                Invoke(new EventHandler(delegate (object sender, EventArgs e)
+                {
+                    logChart.UpdatePercentages();
+                }), new object[2] { this, null });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        // Save before close
+        private void ReptitoireForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (logThread != null && logThread.IsAlive)
+                logThread.Interrupt(); // We cant save if this thread is spooled
+            manager.Save();
+        }
+
+        private void openSaveFilePathButton_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(manager.GetSaveFilesPath()) { UseShellExecute = true });
         }
     }
 }

@@ -33,7 +33,7 @@
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReptitoireForm));
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.breedingTab = new System.Windows.Forms.TabControl();
             this.reptileInfoTab = new System.Windows.Forms.TabPage();
             this.deleteReptileButton = new System.Windows.Forms.Button();
             this.deleteReptileCombo = new System.Windows.Forms.ComboBox();
@@ -96,10 +96,13 @@
             this.label15 = new System.Windows.Forms.Label();
             this.feedLogReptileCombo = new System.Windows.Forms.ComboBox();
             this.orderTab = new System.Windows.Forms.TabPage();
-            this.dubiaLinkButton = new System.Windows.Forms.Button();
-            this.flukersLinkButton = new System.Windows.Forms.Button();
             this.disclaimer = new System.Windows.Forms.Label();
-            this.tabControl1.SuspendLayout();
+            this.flukersLinkButton = new System.Windows.Forms.Button();
+            this.dubiaLinkButton = new System.Windows.Forms.Button();
+            this.settingsTab = new System.Windows.Forms.TabPage();
+            this.openSaveFilePathButton = new System.Windows.Forms.Button();
+            this.label20 = new System.Windows.Forms.Label();
+            this.breedingTab.SuspendLayout();
             this.reptileInfoTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.feedAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -111,19 +114,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.feedLogChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
             this.orderTab.SuspendLayout();
+            this.settingsTab.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // breedingTab
             // 
-            this.tabControl1.Controls.Add(this.reptileInfoTab);
-            this.tabControl1.Controls.Add(this.feederInfoTab);
-            this.tabControl1.Controls.Add(this.feedLogTab);
-            this.tabControl1.Controls.Add(this.orderTab);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(776, 426);
-            this.tabControl1.TabIndex = 0;
+            this.breedingTab.Controls.Add(this.reptileInfoTab);
+            this.breedingTab.Controls.Add(this.feederInfoTab);
+            this.breedingTab.Controls.Add(this.feedLogTab);
+            this.breedingTab.Controls.Add(this.orderTab);
+            this.breedingTab.Controls.Add(this.settingsTab);
+            this.breedingTab.Location = new System.Drawing.Point(12, 12);
+            this.breedingTab.Name = "breedingTab";
+            this.breedingTab.SelectedIndex = 0;
+            this.breedingTab.Size = new System.Drawing.Size(776, 426);
+            this.breedingTab.TabIndex = 0;
             // 
             // reptileInfoTab
             // 
@@ -752,26 +757,6 @@
             this.orderTab.TabIndex = 3;
             this.orderTab.Text = "Order";
             // 
-            // dubiaLinkButton
-            // 
-            this.dubiaLinkButton.Image = ((System.Drawing.Image)(resources.GetObject("dubiaLinkButton.Image")));
-            this.dubiaLinkButton.Location = new System.Drawing.Point(6, 6);
-            this.dubiaLinkButton.Name = "dubiaLinkButton";
-            this.dubiaLinkButton.Size = new System.Drawing.Size(756, 140);
-            this.dubiaLinkButton.TabIndex = 0;
-            this.dubiaLinkButton.UseVisualStyleBackColor = true;
-            this.dubiaLinkButton.Click += new System.EventHandler(this.dubiaLinkButton_Click);
-            // 
-            // flukersLinkButton
-            // 
-            this.flukersLinkButton.Image = ((System.Drawing.Image)(resources.GetObject("flukersLinkButton.Image")));
-            this.flukersLinkButton.Location = new System.Drawing.Point(6, 152);
-            this.flukersLinkButton.Name = "flukersLinkButton";
-            this.flukersLinkButton.Size = new System.Drawing.Size(756, 140);
-            this.flukersLinkButton.TabIndex = 1;
-            this.flukersLinkButton.UseVisualStyleBackColor = true;
-            this.flukersLinkButton.Click += new System.EventHandler(this.flukersLinkButton_Click);
-            // 
             // disclaimer
             // 
             this.disclaimer.AutoSize = true;
@@ -781,20 +766,74 @@
             this.disclaimer.TabIndex = 2;
             this.disclaimer.Text = "(Not sponsored, just reputable)";
             // 
+            // flukersLinkButton
+            // 
+            this.flukersLinkButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("flukersLinkButton.BackgroundImage")));
+            this.flukersLinkButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.flukersLinkButton.Location = new System.Drawing.Point(180, 6);
+            this.flukersLinkButton.Name = "flukersLinkButton";
+            this.flukersLinkButton.Size = new System.Drawing.Size(345, 140);
+            this.flukersLinkButton.TabIndex = 1;
+            this.flukersLinkButton.UseVisualStyleBackColor = true;
+            this.flukersLinkButton.Click += new System.EventHandler(this.flukersLinkButton_Click);
+            // 
+            // dubiaLinkButton
+            // 
+            this.dubiaLinkButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("dubiaLinkButton.BackgroundImage")));
+            this.dubiaLinkButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.dubiaLinkButton.Location = new System.Drawing.Point(6, 6);
+            this.dubiaLinkButton.Name = "dubiaLinkButton";
+            this.dubiaLinkButton.Size = new System.Drawing.Size(168, 140);
+            this.dubiaLinkButton.TabIndex = 0;
+            this.dubiaLinkButton.UseVisualStyleBackColor = true;
+            this.dubiaLinkButton.Click += new System.EventHandler(this.dubiaLinkButton_Click);
+            // 
+            // settingsTab
+            // 
+            this.settingsTab.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.settingsTab.Controls.Add(this.label20);
+            this.settingsTab.Controls.Add(this.openSaveFilePathButton);
+            this.settingsTab.Location = new System.Drawing.Point(4, 24);
+            this.settingsTab.Name = "settingsTab";
+            this.settingsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.settingsTab.Size = new System.Drawing.Size(768, 398);
+            this.settingsTab.TabIndex = 4;
+            this.settingsTab.Text = "Settings";
+            // 
+            // openSaveFilePathButton
+            // 
+            this.openSaveFilePathButton.Location = new System.Drawing.Point(6, 78);
+            this.openSaveFilePathButton.Name = "openSaveFilePathButton";
+            this.openSaveFilePathButton.Size = new System.Drawing.Size(137, 23);
+            this.openSaveFilePathButton.TabIndex = 0;
+            this.openSaveFilePathButton.Text = "Open Save Files Path";
+            this.openSaveFilePathButton.UseVisualStyleBackColor = true;
+            this.openSaveFilePathButton.Click += new System.EventHandler(this.openSaveFilePathButton_Click);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label20.Location = new System.Drawing.Point(6, 3);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(135, 45);
+            this.label20.TabIndex = 1;
+            this.label20.Text = "Settings";
+            // 
             // ReptitoireForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.breedingTab);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ReptitoireForm";
             this.Text = "Reptitoire";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ReptitoireForm_FormClosing);
-            this.tabControl1.ResumeLayout(false);
+            this.breedingTab.ResumeLayout(false);
             this.reptileInfoTab.ResumeLayout(false);
             this.reptileInfoTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.feedAmount)).EndInit();
@@ -810,13 +849,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).EndInit();
             this.orderTab.ResumeLayout(false);
             this.orderTab.PerformLayout();
+            this.settingsTab.ResumeLayout(false);
+            this.settingsTab.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private TabControl tabControl1;
+        private TabControl breedingTab;
         private TabPage reptileInfoTab;
         private DataGridView dataGridView1;
         private TabPage feederInfoTab;
@@ -882,5 +923,8 @@
         private Button flukersLinkButton;
         private Button dubiaLinkButton;
         private Label disclaimer;
+        private TabPage settingsTab;
+        private Label label20;
+        private Button openSaveFilePathButton;
     }
 }

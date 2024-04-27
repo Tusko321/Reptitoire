@@ -59,6 +59,16 @@ namespace Reptitoire.ReptitoireManager
         }
 
         /// <summary>
+        /// Returns path to save files
+        /// </summary>
+        /// <returns></returns>
+        public string GetSaveFilesPath()
+        {
+            string appDataDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            return Path.Combine(appDataDir, FOLDER_NAME);
+        }
+
+        /// <summary>
         /// Get feed log
         /// </summary>
         /// <returns></returns>
