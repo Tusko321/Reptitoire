@@ -114,6 +114,7 @@
             // 
             // reptileInfoTab
             // 
+            this.reptileInfoTab.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.reptileInfoTab.Controls.Add(this.deleteReptileButton);
             this.reptileInfoTab.Controls.Add(this.deleteReptileCombo);
             this.reptileInfoTab.Controls.Add(this.label17);
@@ -143,7 +144,6 @@
             this.reptileInfoTab.Size = new System.Drawing.Size(768, 398);
             this.reptileInfoTab.TabIndex = 0;
             this.reptileInfoTab.Text = "Reptile Info";
-            this.reptileInfoTab.UseVisualStyleBackColor = true;
             // 
             // deleteReptileButton
             // 
@@ -399,6 +399,7 @@
             // 
             // feederInfoTab
             // 
+            this.feederInfoTab.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.feederInfoTab.Controls.Add(this.deleteFeederButton);
             this.feederInfoTab.Controls.Add(this.deleteFeederCombo);
             this.feederInfoTab.Controls.Add(this.label18);
@@ -420,7 +421,6 @@
             this.feederInfoTab.Size = new System.Drawing.Size(768, 398);
             this.feederInfoTab.TabIndex = 1;
             this.feederInfoTab.Text = "Feeder Info";
-            this.feederInfoTab.UseVisualStyleBackColor = true;
             // 
             // deleteFeederButton
             // 
@@ -590,6 +590,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.tabPage1.Controls.Add(this.feedLogLoadProgress);
             this.tabPage1.Controls.Add(this.logClearButton);
             this.tabPage1.Controls.Add(this.logExportButton);
@@ -602,7 +603,6 @@
             this.tabPage1.Size = new System.Drawing.Size(768, 398);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Feed Log";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // feedLogLoadProgress
             // 
@@ -701,7 +701,9 @@
             this.BackColor = System.Drawing.Color.Green;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "ReptitoireForm";
             this.Text = "Reptitoire";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ReptitoireForm_FormClosing);
