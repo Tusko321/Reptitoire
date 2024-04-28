@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReptitoireForm));
             this.breedingTab = new System.Windows.Forms.TabControl();
             this.reptileInfoTab = new System.Windows.Forms.TabPage();
@@ -99,9 +99,8 @@
             this.disclaimer = new System.Windows.Forms.Label();
             this.flukersLinkButton = new System.Windows.Forms.Button();
             this.dubiaLinkButton = new System.Windows.Forms.Button();
-            this.settingsTab = new System.Windows.Forms.TabPage();
+            this.advancedTab = new System.Windows.Forms.TabPage();
             this.openSaveFilePathButton = new System.Windows.Forms.Button();
-            this.label20 = new System.Windows.Forms.Label();
             this.breedingTab.SuspendLayout();
             this.reptileInfoTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.feedAmount)).BeginInit();
@@ -114,7 +113,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.feedLogChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
             this.orderTab.SuspendLayout();
-            this.settingsTab.SuspendLayout();
+            this.advancedTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // breedingTab
@@ -123,7 +122,7 @@
             this.breedingTab.Controls.Add(this.feederInfoTab);
             this.breedingTab.Controls.Add(this.feedLogTab);
             this.breedingTab.Controls.Add(this.orderTab);
-            this.breedingTab.Controls.Add(this.settingsTab);
+            this.breedingTab.Controls.Add(this.advancedTab);
             this.breedingTab.Location = new System.Drawing.Point(12, 12);
             this.breedingTab.Name = "breedingTab";
             this.breedingTab.SelectedIndex = 0;
@@ -626,23 +625,23 @@
             // 
             // feedLogChart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.feedLogChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.feedLogChart.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.feedLogChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.feedLogChart.Legends.Add(legend2);
             this.feedLogChart.Location = new System.Drawing.Point(414, 58);
             this.feedLogChart.Name = "feedLogChart";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.feedLogChart.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.feedLogChart.Series.Add(series2);
             this.feedLogChart.Size = new System.Drawing.Size(348, 334);
             this.feedLogChart.TabIndex = 8;
             this.feedLogChart.Text = "Diet";
-            title1.Name = "Title1";
-            title1.Text = "Diet";
-            this.feedLogChart.Titles.Add(title1);
+            title2.Name = "Title1";
+            title2.Text = "Diet";
+            this.feedLogChart.Titles.Add(title2);
             // 
             // exportCSVButton
             // 
@@ -788,37 +787,26 @@
             this.dubiaLinkButton.UseVisualStyleBackColor = true;
             this.dubiaLinkButton.Click += new System.EventHandler(this.dubiaLinkButton_Click);
             // 
-            // settingsTab
+            // advancedTab
             // 
-            this.settingsTab.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.settingsTab.Controls.Add(this.label20);
-            this.settingsTab.Controls.Add(this.openSaveFilePathButton);
-            this.settingsTab.Location = new System.Drawing.Point(4, 24);
-            this.settingsTab.Name = "settingsTab";
-            this.settingsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.settingsTab.Size = new System.Drawing.Size(768, 398);
-            this.settingsTab.TabIndex = 4;
-            this.settingsTab.Text = "Settings";
+            this.advancedTab.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.advancedTab.Controls.Add(this.openSaveFilePathButton);
+            this.advancedTab.Location = new System.Drawing.Point(4, 24);
+            this.advancedTab.Name = "advancedTab";
+            this.advancedTab.Padding = new System.Windows.Forms.Padding(3);
+            this.advancedTab.Size = new System.Drawing.Size(768, 398);
+            this.advancedTab.TabIndex = 4;
+            this.advancedTab.Text = "Advanced";
             // 
             // openSaveFilePathButton
             // 
-            this.openSaveFilePathButton.Location = new System.Drawing.Point(6, 78);
+            this.openSaveFilePathButton.Location = new System.Drawing.Point(3, 6);
             this.openSaveFilePathButton.Name = "openSaveFilePathButton";
             this.openSaveFilePathButton.Size = new System.Drawing.Size(137, 23);
             this.openSaveFilePathButton.TabIndex = 0;
             this.openSaveFilePathButton.Text = "Open Save Files Path";
             this.openSaveFilePathButton.UseVisualStyleBackColor = true;
             this.openSaveFilePathButton.Click += new System.EventHandler(this.openSaveFilePathButton_Click);
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label20.Location = new System.Drawing.Point(6, 3);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(135, 45);
-            this.label20.TabIndex = 1;
-            this.label20.Text = "Settings";
             // 
             // ReptitoireForm
             // 
@@ -849,8 +837,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).EndInit();
             this.orderTab.ResumeLayout(false);
             this.orderTab.PerformLayout();
-            this.settingsTab.ResumeLayout(false);
-            this.settingsTab.PerformLayout();
+            this.advancedTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -923,8 +910,7 @@
         private Button flukersLinkButton;
         private Button dubiaLinkButton;
         private Label disclaimer;
-        private TabPage settingsTab;
-        private Label label20;
+        private TabPage advancedTab;
         private Button openSaveFilePathButton;
     }
 }

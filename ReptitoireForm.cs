@@ -209,6 +209,11 @@ namespace Reptitoire
                 }
             }
         }
+
+        private void openSaveFilePathButton_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(manager.GetSaveFilesPath()) { UseShellExecute = true });
+        }
         #endregion
 
         #region Order
@@ -225,6 +230,7 @@ namespace Reptitoire
         }
         #endregion
 
+        #region Form Updates
         private void UpdateFeederComboBoxes()
         {
             feedFeederSpeciesCombo.Items.Clear();
@@ -305,6 +311,7 @@ namespace Reptitoire
 
             }
         }
+        #endregion
 
         // Save before close
         private void ReptitoireForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -312,11 +319,6 @@ namespace Reptitoire
             if (logThread != null && logThread.IsAlive)
                 logThread.Interrupt(); // We cant save if this thread is spooled
             manager.Save();
-        }
-
-        private void openSaveFilePathButton_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(manager.GetSaveFilesPath()) { UseShellExecute = true });
         }
     }
 }
