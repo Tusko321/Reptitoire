@@ -19,5 +19,7 @@
             get => List[index];
             set => List[index] = value;
         }
+
+        public void Clear() { List.Clear(); }
     }
 }

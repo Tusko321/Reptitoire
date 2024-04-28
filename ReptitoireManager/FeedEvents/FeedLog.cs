@@ -26,6 +26,11 @@ namespace Reptitoire.ReptitoireManager.FeedEvents
             }
         }
 
+        public void Clear()
+        {
+            log.Clear();
+        }
+
         /// <summary>
         /// Gets the feed logs for a specified reptile
         /// </summary>

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReptitoireForm));
             this.breedingTab = new System.Windows.Forms.TabControl();
             this.reptileInfoTab = new System.Windows.Forms.TabPage();
@@ -100,6 +100,11 @@
             this.flukersLinkButton = new System.Windows.Forms.Button();
             this.dubiaLinkButton = new System.Windows.Forms.Button();
             this.advancedTab = new System.Windows.Forms.TabPage();
+            this.totalSaveMBText = new System.Windows.Forms.Label();
+            this.deleteAllDataButton = new System.Windows.Forms.Button();
+            this.logSaveMBText = new System.Windows.Forms.Label();
+            this.feederSaveMBText = new System.Windows.Forms.Label();
+            this.reptileSaveMBText = new System.Windows.Forms.Label();
             this.openSaveFilePathButton = new System.Windows.Forms.Button();
             this.breedingTab.SuspendLayout();
             this.reptileInfoTab.SuspendLayout();
@@ -625,23 +630,23 @@
             // 
             // feedLogChart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.feedLogChart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.feedLogChart.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.feedLogChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.feedLogChart.Legends.Add(legend1);
             this.feedLogChart.Location = new System.Drawing.Point(414, 58);
             this.feedLogChart.Name = "feedLogChart";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.feedLogChart.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.feedLogChart.Series.Add(series1);
             this.feedLogChart.Size = new System.Drawing.Size(348, 334);
             this.feedLogChart.TabIndex = 8;
             this.feedLogChart.Text = "Diet";
-            title2.Name = "Title1";
-            title2.Text = "Diet";
-            this.feedLogChart.Titles.Add(title2);
+            title1.Name = "Title1";
+            title1.Text = "Diet";
+            this.feedLogChart.Titles.Add(title1);
             // 
             // exportCSVButton
             // 
@@ -790,6 +795,11 @@
             // advancedTab
             // 
             this.advancedTab.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.advancedTab.Controls.Add(this.totalSaveMBText);
+            this.advancedTab.Controls.Add(this.deleteAllDataButton);
+            this.advancedTab.Controls.Add(this.logSaveMBText);
+            this.advancedTab.Controls.Add(this.feederSaveMBText);
+            this.advancedTab.Controls.Add(this.reptileSaveMBText);
             this.advancedTab.Controls.Add(this.openSaveFilePathButton);
             this.advancedTab.Location = new System.Drawing.Point(4, 24);
             this.advancedTab.Name = "advancedTab";
@@ -798,9 +808,56 @@
             this.advancedTab.TabIndex = 4;
             this.advancedTab.Text = "Advanced";
             // 
+            // totalSaveMBText
+            // 
+            this.totalSaveMBText.AutoSize = true;
+            this.totalSaveMBText.Location = new System.Drawing.Point(625, 325);
+            this.totalSaveMBText.Name = "totalSaveMBText";
+            this.totalSaveMBText.Size = new System.Drawing.Size(35, 15);
+            this.totalSaveMBText.TabIndex = 5;
+            this.totalSaveMBText.Text = "Total:";
+            // 
+            // deleteAllDataButton
+            // 
+            this.deleteAllDataButton.BackColor = System.Drawing.Color.Crimson;
+            this.deleteAllDataButton.Location = new System.Drawing.Point(625, 340);
+            this.deleteAllDataButton.Name = "deleteAllDataButton";
+            this.deleteAllDataButton.Size = new System.Drawing.Size(137, 23);
+            this.deleteAllDataButton.TabIndex = 4;
+            this.deleteAllDataButton.Text = "DELETE ALL DATA";
+            this.deleteAllDataButton.UseVisualStyleBackColor = false;
+            this.deleteAllDataButton.Click += new System.EventHandler(this.deleteAllDataButton_Click);
+            // 
+            // logSaveMBText
+            // 
+            this.logSaveMBText.AutoSize = true;
+            this.logSaveMBText.Location = new System.Drawing.Point(625, 310);
+            this.logSaveMBText.Name = "logSaveMBText";
+            this.logSaveMBText.Size = new System.Drawing.Size(57, 15);
+            this.logSaveMBText.TabIndex = 3;
+            this.logSaveMBText.Text = "Log Save:";
+            // 
+            // feederSaveMBText
+            // 
+            this.feederSaveMBText.AutoSize = true;
+            this.feederSaveMBText.Location = new System.Drawing.Point(625, 295);
+            this.feederSaveMBText.Name = "feederSaveMBText";
+            this.feederSaveMBText.Size = new System.Drawing.Size(72, 15);
+            this.feederSaveMBText.TabIndex = 2;
+            this.feederSaveMBText.Text = "Feeder Save:";
+            // 
+            // reptileSaveMBText
+            // 
+            this.reptileSaveMBText.AutoSize = true;
+            this.reptileSaveMBText.Location = new System.Drawing.Point(625, 280);
+            this.reptileSaveMBText.Name = "reptileSaveMBText";
+            this.reptileSaveMBText.Size = new System.Drawing.Size(73, 15);
+            this.reptileSaveMBText.TabIndex = 1;
+            this.reptileSaveMBText.Text = "Reptile Save:";
+            // 
             // openSaveFilePathButton
             // 
-            this.openSaveFilePathButton.Location = new System.Drawing.Point(3, 6);
+            this.openSaveFilePathButton.Location = new System.Drawing.Point(625, 369);
             this.openSaveFilePathButton.Name = "openSaveFilePathButton";
             this.openSaveFilePathButton.Size = new System.Drawing.Size(137, 23);
             this.openSaveFilePathButton.TabIndex = 0;
@@ -838,6 +895,7 @@
             this.orderTab.ResumeLayout(false);
             this.orderTab.PerformLayout();
             this.advancedTab.ResumeLayout(false);
+            this.advancedTab.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -912,5 +970,10 @@
         private Label disclaimer;
         private TabPage advancedTab;
         private Button openSaveFilePathButton;
+        private Button deleteAllDataButton;
+        private Label logSaveMBText;
+        private Label feederSaveMBText;
+        private Label reptileSaveMBText;
+        private Label totalSaveMBText;
     }
 }

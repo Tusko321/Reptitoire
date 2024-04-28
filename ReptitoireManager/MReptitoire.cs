@@ -9,10 +9,10 @@ namespace Reptitoire.ReptitoireManager
     public class MReptitoire
     {
         // Consts
-        private const string REPTILE_FILENAME = "reptiles.dat";
-        private const string FEEDER_FILENAME = "feeders.dat";
-        private const string FEED_LOG_FILENAME = "log.dat";
-        private const string FOLDER_NAME = "Reptitoire";
+        public const string REPTILE_FILENAME = "reptiles.dat";
+        public const string FEEDER_FILENAME = "feeders.dat";
+        public const string FEED_LOG_FILENAME = "log.dat";
+        public const string FOLDER_NAME = "Reptitoire";
         // Consts
 
         // Data
@@ -56,6 +56,13 @@ namespace Reptitoire.ReptitoireManager
             }
 
             feedLog = new FeedLog(logSaveDir);
+        }
+
+        public void DeleteAll()
+        {
+            reptiles.Clear();
+            feeders.Clear();
+            feedLog.Clear();
         }
 
         /// <summary>

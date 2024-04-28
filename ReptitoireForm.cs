@@ -29,6 +29,33 @@ namespace Reptitoire
             UpdateFeederGridList();
             UpdateFeederComboBoxes();
             UpdateReptileComboBoxes();
+            UpdateFileSizes();
+        }
+
+        private void UpdateFileSizes()
+        {
+            string appDataDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string reptileSaveDir = Path.Combine(appDataDir, MReptitoire.FOLDER_NAME, MReptitoire.REPTILE_FILENAME);
+            string feederSaveDir = Path.Combine(appDataDir, MReptitoire.FOLDER_NAME, MReptitoire.FEEDER_FILENAME);
+            string logSaveDir = Path.Combine(appDataDir, MReptitoire.FOLDER_NAME, MReptitoire.FEED_LOG_FILENAME);
+
+            FileStream reptileFile = File.Open(reptileSaveDir, FileMode.OpenOrCreate);
+            FileStream feederFile = File.Open(feederSaveDir, FileMode.OpenOrCreate);
+            FileStream logFile = File.Open(logSaveDir, FileMode.OpenOrCreate);
+
+            long reptileSize = reptileFile.Length;
+            long feederSize = feederFile.Length;
+            long logSize = logFile.Length;
+            long total = reptileSize + feederSize + logSize;
+
+            reptileFile.Close();
+            feederFile.Close();
+            logFile.Close();
+
+            reptileSaveMBText.Text = "Reptile Save: " + (reptileSize / 1024 / 1024).ToString() + "MB";
+            feederSaveMBText.Text = "Feeder Save: " + (feederSize / 1024 / 1024).ToString() + "MB";
+            logSaveMBText.Text = "Log Save: " + (logSize / 1024 / 1024).ToString() + "MB";
+            totalSaveMBText.Text = "Total: " + (total / 1024 / 1024).ToString() + "MB";
         }
 
         #region Reptile
@@ -319,6 +346,32 @@ namespace Reptitoire
             if (logThread != null && logThread.IsAlive)
                 logThread.Interrupt(); // We cant save if this thread is spooled
             manager.Save();
+        }
+
+        private void deleteAllDataButton_Click(object sender, EventArgs e)
+        {
+            var form = new DeleteDialog(DeleteAllDataCallback);
+            form.ShowDialog(this);
+        }
+
+        private void DeleteAllDataCallback()
+        {
+            string appDataDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string reptileSaveDir = Path.Combine(appDataDir, MReptitoire.FOLDER_NAME, MReptitoire.REPTILE_FILENAME);
+            string feederSaveDir = Path.Combine(appDataDir, MReptitoire.FOLDER_NAME, MReptitoire.FEEDER_FILENAME);
+            string logSaveDir = Path.Combine(appDataDir, MReptitoire.FOLDER_NAME, MReptitoire.FEED_LOG_FILENAME);
+
+            File.Delete(reptileSaveDir);
+            File.Delete(feederSaveDir);
+            File.Delete(logSaveDir);
+
+            manager.DeleteAll();
+
+            UpdateReptileGridList();
+            UpdateFeederGridList();
+            UpdateFeederComboBoxes();
+            UpdateReptileComboBoxes();
+            UpdateFileSizes();
         }
     }
 }
