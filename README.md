@@ -9,4 +9,4 @@ Features:
 
 Reptitoire stores save data in 'appdata' and can be opened via the 'Advanced' tab.
 
-Disclaimer: Although the Fluker's Farms and Dubia.com images are contained within this repo, they are owned by their rightful owners and subject to thier terms.
+Disclaimer: Although the Fluker's Farms and Dubia.com images are contained within this repo, they are owned by their rightful owners and subject to their terms.
