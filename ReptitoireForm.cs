@@ -373,5 +373,18 @@ namespace Reptitoire
             UpdateReptileComboBoxes();
             UpdateFileSizes();
         }
+
+        // Backup saves
+        private void backupButton_Click(object sender, EventArgs e)
+        {
+            manager.Save();
+            string reptile = manager.GetReptileSavePath();
+            string feeder = manager.GetFeederSavePath();
+            string log = manager.GetLogSavePath();
+
+            File.Copy(reptile, reptile.Substring(0, reptile.Length - 4) + ".bak.dat");
+            File.Copy(feeder, feeder.Substring(0, feeder.Length - 4) + ".bak.dat");
+            File.Copy(log, log.Substring(0, log.Length - 4) + ".bak.dat");
+        }
     }
 }

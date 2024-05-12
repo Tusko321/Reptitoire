@@ -75,6 +75,21 @@ namespace Reptitoire.ReptitoireManager
             return Path.Combine(appDataDir, FOLDER_NAME);
         }
 
+        public string GetReptileSavePath()
+        {
+            return Path.Combine(GetSaveFilesPath(), REPTILE_FILENAME);
+        }
+
+        public string GetFeederSavePath()
+        {
+            return Path.Combine(GetSaveFilesPath(), FEEDER_FILENAME);
+        }
+
+        public string GetLogSavePath()
+        {
+            return Path.Combine(GetSaveFilesPath(), FEED_LOG_FILENAME);
+        }
+
         /// <summary>
         /// Get feed log
         /// </summary>

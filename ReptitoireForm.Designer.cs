@@ -100,12 +100,14 @@
             this.flukersLinkButton = new System.Windows.Forms.Button();
             this.dubiaLinkButton = new System.Windows.Forms.Button();
             this.advancedTab = new System.Windows.Forms.TabPage();
-            this.totalSaveMBText = new System.Windows.Forms.Label();
-            this.deleteAllDataButton = new System.Windows.Forms.Button();
-            this.logSaveMBText = new System.Windows.Forms.Label();
-            this.feederSaveMBText = new System.Windows.Forms.Label();
-            this.reptileSaveMBText = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.openSaveFilePathButton = new System.Windows.Forms.Button();
+            this.deleteAllDataButton = new System.Windows.Forms.Button();
+            this.backupButton = new System.Windows.Forms.Button();
+            this.reptileSaveMBText = new System.Windows.Forms.Label();
+            this.totalSaveMBText = new System.Windows.Forms.Label();
+            this.feederSaveMBText = new System.Windows.Forms.Label();
+            this.logSaveMBText = new System.Windows.Forms.Label();
             this.breedingTab.SuspendLayout();
             this.reptileInfoTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.feedAmount)).BeginInit();
@@ -119,6 +121,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.logGrid)).BeginInit();
             this.orderTab.SuspendLayout();
             this.advancedTab.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // breedingTab
@@ -795,12 +798,7 @@
             // advancedTab
             // 
             this.advancedTab.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.advancedTab.Controls.Add(this.totalSaveMBText);
-            this.advancedTab.Controls.Add(this.deleteAllDataButton);
-            this.advancedTab.Controls.Add(this.logSaveMBText);
-            this.advancedTab.Controls.Add(this.feederSaveMBText);
-            this.advancedTab.Controls.Add(this.reptileSaveMBText);
-            this.advancedTab.Controls.Add(this.openSaveFilePathButton);
+            this.advancedTab.Controls.Add(this.panel1);
             this.advancedTab.Location = new System.Drawing.Point(4, 24);
             this.advancedTab.Name = "advancedTab";
             this.advancedTab.Padding = new System.Windows.Forms.Padding(3);
@@ -808,19 +806,35 @@
             this.advancedTab.TabIndex = 4;
             this.advancedTab.Text = "Advanced";
             // 
-            // totalSaveMBText
+            // panel1
             // 
-            this.totalSaveMBText.AutoSize = true;
-            this.totalSaveMBText.Location = new System.Drawing.Point(625, 325);
-            this.totalSaveMBText.Name = "totalSaveMBText";
-            this.totalSaveMBText.Size = new System.Drawing.Size(35, 15);
-            this.totalSaveMBText.TabIndex = 5;
-            this.totalSaveMBText.Text = "Total:";
+            this.panel1.BackColor = System.Drawing.Color.Honeydew;
+            this.panel1.Controls.Add(this.openSaveFilePathButton);
+            this.panel1.Controls.Add(this.deleteAllDataButton);
+            this.panel1.Controls.Add(this.backupButton);
+            this.panel1.Controls.Add(this.reptileSaveMBText);
+            this.panel1.Controls.Add(this.totalSaveMBText);
+            this.panel1.Controls.Add(this.feederSaveMBText);
+            this.panel1.Controls.Add(this.logSaveMBText);
+            this.panel1.Location = new System.Drawing.Point(379, 292);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(383, 100);
+            this.panel1.TabIndex = 7;
+            // 
+            // openSaveFilePathButton
+            // 
+            this.openSaveFilePathButton.Location = new System.Drawing.Point(3, 74);
+            this.openSaveFilePathButton.Name = "openSaveFilePathButton";
+            this.openSaveFilePathButton.Size = new System.Drawing.Size(137, 23);
+            this.openSaveFilePathButton.TabIndex = 0;
+            this.openSaveFilePathButton.Text = "Open Save Files Path";
+            this.openSaveFilePathButton.UseVisualStyleBackColor = true;
+            this.openSaveFilePathButton.Click += new System.EventHandler(this.openSaveFilePathButton_Click);
             // 
             // deleteAllDataButton
             // 
             this.deleteAllDataButton.BackColor = System.Drawing.Color.Crimson;
-            this.deleteAllDataButton.Location = new System.Drawing.Point(625, 340);
+            this.deleteAllDataButton.Location = new System.Drawing.Point(243, 74);
             this.deleteAllDataButton.Name = "deleteAllDataButton";
             this.deleteAllDataButton.Size = new System.Drawing.Size(137, 23);
             this.deleteAllDataButton.TabIndex = 4;
@@ -828,42 +842,51 @@
             this.deleteAllDataButton.UseVisualStyleBackColor = false;
             this.deleteAllDataButton.Click += new System.EventHandler(this.deleteAllDataButton_Click);
             // 
-            // logSaveMBText
+            // backupButton
             // 
-            this.logSaveMBText.AutoSize = true;
-            this.logSaveMBText.Location = new System.Drawing.Point(625, 310);
-            this.logSaveMBText.Name = "logSaveMBText";
-            this.logSaveMBText.Size = new System.Drawing.Size(57, 15);
-            this.logSaveMBText.TabIndex = 3;
-            this.logSaveMBText.Text = "Log Save:";
-            // 
-            // feederSaveMBText
-            // 
-            this.feederSaveMBText.AutoSize = true;
-            this.feederSaveMBText.Location = new System.Drawing.Point(625, 295);
-            this.feederSaveMBText.Name = "feederSaveMBText";
-            this.feederSaveMBText.Size = new System.Drawing.Size(72, 15);
-            this.feederSaveMBText.TabIndex = 2;
-            this.feederSaveMBText.Text = "Feeder Save:";
+            this.backupButton.Location = new System.Drawing.Point(146, 74);
+            this.backupButton.Name = "backupButton";
+            this.backupButton.Size = new System.Drawing.Size(91, 23);
+            this.backupButton.TabIndex = 6;
+            this.backupButton.Text = "Backup Data";
+            this.backupButton.UseVisualStyleBackColor = true;
+            this.backupButton.Click += new System.EventHandler(this.backupButton_Click);
             // 
             // reptileSaveMBText
             // 
             this.reptileSaveMBText.AutoSize = true;
-            this.reptileSaveMBText.Location = new System.Drawing.Point(625, 280);
+            this.reptileSaveMBText.Location = new System.Drawing.Point(243, 0);
             this.reptileSaveMBText.Name = "reptileSaveMBText";
             this.reptileSaveMBText.Size = new System.Drawing.Size(73, 15);
             this.reptileSaveMBText.TabIndex = 1;
             this.reptileSaveMBText.Text = "Reptile Save:";
             // 
-            // openSaveFilePathButton
+            // totalSaveMBText
             // 
-            this.openSaveFilePathButton.Location = new System.Drawing.Point(625, 369);
-            this.openSaveFilePathButton.Name = "openSaveFilePathButton";
-            this.openSaveFilePathButton.Size = new System.Drawing.Size(137, 23);
-            this.openSaveFilePathButton.TabIndex = 0;
-            this.openSaveFilePathButton.Text = "Open Save Files Path";
-            this.openSaveFilePathButton.UseVisualStyleBackColor = true;
-            this.openSaveFilePathButton.Click += new System.EventHandler(this.openSaveFilePathButton_Click);
+            this.totalSaveMBText.AutoSize = true;
+            this.totalSaveMBText.Location = new System.Drawing.Point(243, 45);
+            this.totalSaveMBText.Name = "totalSaveMBText";
+            this.totalSaveMBText.Size = new System.Drawing.Size(35, 15);
+            this.totalSaveMBText.TabIndex = 5;
+            this.totalSaveMBText.Text = "Total:";
+            // 
+            // feederSaveMBText
+            // 
+            this.feederSaveMBText.AutoSize = true;
+            this.feederSaveMBText.Location = new System.Drawing.Point(243, 15);
+            this.feederSaveMBText.Name = "feederSaveMBText";
+            this.feederSaveMBText.Size = new System.Drawing.Size(72, 15);
+            this.feederSaveMBText.TabIndex = 2;
+            this.feederSaveMBText.Text = "Feeder Save:";
+            // 
+            // logSaveMBText
+            // 
+            this.logSaveMBText.AutoSize = true;
+            this.logSaveMBText.Location = new System.Drawing.Point(243, 30);
+            this.logSaveMBText.Name = "logSaveMBText";
+            this.logSaveMBText.Size = new System.Drawing.Size(57, 15);
+            this.logSaveMBText.TabIndex = 3;
+            this.logSaveMBText.Text = "Log Save:";
             // 
             // ReptitoireForm
             // 
@@ -895,7 +918,8 @@
             this.orderTab.ResumeLayout(false);
             this.orderTab.PerformLayout();
             this.advancedTab.ResumeLayout(false);
-            this.advancedTab.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -975,5 +999,7 @@
         private Label feederSaveMBText;
         private Label reptileSaveMBText;
         private Label totalSaveMBText;
+        private Panel panel1;
+        private Button backupButton;
     }
 }
